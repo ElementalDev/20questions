@@ -4,6 +4,8 @@ body {
   font-family: Ubuntu, sans-serif;
 }
 
+/* Title page styles */
+
 #title {
   text-align: center;
   font-size: 90px;
@@ -22,6 +24,13 @@ body {
   text-align: center;
 }
 
+/* Questions styles */
+
+#question {
+  margin: auto;
+  margin-top: 50px;
+}
+
 #roundTitle {
   border: 1px solid black;
   font-size: 60px;
@@ -32,4 +41,19 @@ body {
   font-size: 60px;
   padding: 10px;
   text-align: center;
+}
+
+td {
+  padding: 20px;
+}
+
+.answerTable {
+  margin: auto;
+  margin-top: 50px;
+}
+
+.answerBtns {
+  height: 60px;
+  width: 500px;
+
 }
