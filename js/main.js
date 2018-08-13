@@ -1,5 +1,5 @@
 $(function() {
   $("#startBtn").click(function (){
-    window.location = "QuickfireQuestions.html";
+    window.location = "quickfirequestions.html";
   })
 })
