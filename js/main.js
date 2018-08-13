@@ -3,6 +3,7 @@ $(function() {
   //Hide other screens
   $("#questionsScreen").hide();
 
+  //When the user clicks the start button
   $("#startBtn").click(function (){
     var diff = getDifficulty();
     var questions = getQuestions(diff);
@@ -10,10 +11,12 @@ $(function() {
     $("#questionsScreen").show();
   })
 
+  //Get and return the difficulty from the radio buttons
   function getDifficulty() {
     return $('.diffBtns:checked').val();
   }
 
+  //get questions from an API
   function getQuestions(difficulty) {
     switch (difficulty) {
 
