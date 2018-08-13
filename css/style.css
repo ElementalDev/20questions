@@ -1,4 +1,17 @@
+#title {
+  text-align: center;
+  font-size: 90px;
+}
+
+#startBtn {
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 70px;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
 .difficultyForm{
-  border: 1px solid black;
   text-align: center;
 }
