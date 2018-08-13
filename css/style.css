@@ -21,3 +21,15 @@ body {
 .difficultyForm{
   text-align: center;
 }
+
+#roundTitle {
+  border: 1px solid black;
+  font-size: 60px;
+  padding: 20px;
+}
+
+#score, #timeKeep {
+  font-size: 60px;
+  padding: 10px;
+  text-align: center;
+}
