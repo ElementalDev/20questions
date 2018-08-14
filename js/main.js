@@ -133,7 +133,7 @@ $(function() {
   }
 
   //Show the questions
-  function showQuestionsForPlayerTwo(ques) {
+  function showQuestionsForPlayerTwo(ques2) {
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -143,7 +143,7 @@ $(function() {
       if (time < 1){
         time = 5;
       }
-      $("#timeKeep").html("Time: " + time);
+      $("#timeKeep2").html("Time: " + time);
     }, 1000);
     var answerBtns = $(".answerBtns2");
     //Array for answers
@@ -157,13 +157,13 @@ $(function() {
     var randBtn = Math.floor(Math.random() * 4) + 1;
 
     //Display the first question
-    seenQuestions.push($("#question2").html(ques.results[randQues].question));
+    seenQuestions.push($("#question2").html(ques2.results[randQues].question));
     //Store the answers
-    answers.push(ques.results[randQues].correct_answer);
+    answers.push(ques2.results[randQues].correct_answer);
     //Store the correct answer
     correctAnswer = answers[0];
     for (var i = 0; i < 3; i++) {
-      answers.push(ques.results[randQues].incorrect_answers[i]);
+      answers.push(ques2.results[randQues].incorrect_answers[i]);
     }
     //Display the answers
     for (var i = 0; i < answers.length; i++) {
@@ -182,9 +182,9 @@ $(function() {
         clearInterval(repeat);
         clearInterval(timer);
         alert("Finished!");
-          $("#timeKeep").html("Time: " + "0");
+          $("#timeKeep2").html("Time: " + "0");
         //Store the score of player one
-        p2Score = $("#score").html();
+        p2Score = $("#score2").html();
       } else {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
@@ -199,13 +199,13 @@ $(function() {
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
         //Display the question
-        $("#question2").html(ques.results[randQues].question);
+        $("#question2").html(ques2.results[randQues].question);
         //Store the answers
-        answers.push(ques.results[randQues].correct_answer);
+        answers.push(ques2.results[randQues].correct_answer);
         //Store the correct answer
         correctAnswer = answers[0];
         for (var i = 0; i < 3; i++) {
-          answers.push(ques.results[randQues].incorrect_answers[i]);
+          answers.push(ques2.results[randQues].incorrect_answers[i]);
         }
         //Display the answers
         for (var i = 0; i < answers.length; i++) {
@@ -240,14 +240,23 @@ $(function() {
     $("#questions2").show();
     showQuestionsForPlayerTwo(questions);
   })
-  //When answer buttons are clicked, it will look for
+  //When player one answer buttons are clicked, it will look for
   $(".answerBtns").click(function(){
     if($(this).hasClass("correct")){
       alert("You are correct");
-      p1Score++
+      p1Score++;
       $("#score").text("Score: " + p1Score);
     } else {
       alert("You are incorrect");
     }
+  })
+  //When player two answer buttons are clicked, it will look for
+  $(".answerBtns2").click(function(){
+    if($(this).hasClass("correct")){
+      alert("You are correct");
+      p2Score++;
+      $("#score2").text("Score: " + p2Score);
+    } else {
+      alert("You are incorrect");
   })
 })

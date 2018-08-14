@@ -26,7 +26,7 @@ body {
 
 /* Questions styles */
 
-#question {
+#question, #question2 {
   margin: auto;
   margin-top: 50px;
 }
@@ -37,7 +37,7 @@ body {
   padding: 20px;
 }
 
-#score, #timeKeep {
+#score, #timeKeep, #score2, #timeKeep2 {
   font-size: 60px;
   padding: 10px;
   text-align: center;
