@@ -52,7 +52,7 @@ td {
   margin-top: 50px;
 }
 
-.answerBtns {
+.answerBtns, .answerBtns2 {
   height: 60px;
   width: 500px;
 
