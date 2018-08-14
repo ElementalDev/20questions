@@ -258,5 +258,6 @@ $(function() {
       $("#score2").text("Score: " + p2Score);
     } else {
       alert("You are incorrect");
+    }
   })
 })
