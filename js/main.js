@@ -42,6 +42,14 @@ $(function() {
   //Show the questions
   function showQuestionsForPlayerOne(ques) {
     var quesNumber = 0;
+    var time = 5;
+    var timer = setInterval(function(){
+      time--;
+      if (time < 1){
+        time = 5;
+      }
+      $("#timeKeep").html("Time: " + time);
+    }, 1000);
     var answerBtns = $(".answerBtns");
     var answers = [];
     var seenQuestions = [];
@@ -67,13 +75,12 @@ $(function() {
         $(answerBtns[i]).addClass("correct");
       }
     }
-
     // Do this function every 5 seconds
-    var timer = setInterval(function() {
+    var repeat = setInterval(function() {
       if (quesNumber == 9) {
         //Stop the timer
         alert("Finished!");
-        clearInterval(timer);
+        clearInterval(repeat);
       } else {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
