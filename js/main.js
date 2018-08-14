@@ -128,7 +128,7 @@ $(function() {
           }
         }
       }
-    }, 5000);
+    }, 1000);
   }
 
   //When the user clicks the start button
@@ -138,13 +138,18 @@ $(function() {
     $("#titleScreen").hide();
     $("#questionsScreenP1").show()
   })
-  //When user wants to start a question round
+  //When Player 1 wants to start a question round
   $("#startQues").click(function(){
     $(this).hide();
     $("#questions1").show();
     showQuestionsForPlayerOne(questions);
   })
-
+  //When Player 2 wants to start a question round
+  $("#startQues2").click(function(){
+    $(this).hide();
+    $("#questions2").show();
+    showQuestionsForPlayerTwo(questions);
+  })
   //When answer buttons are clicked, it will look for
   $(".answerBtns").click(function(){
     if($(this).hasClass("correct")){
