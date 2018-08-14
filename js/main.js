@@ -2,7 +2,7 @@ $(function() {
 
   var diff = "";
   var questions = "";
-  var player1score = 0;
+  var score = 0;
 
   //Hide other screens
   $("#questionsScreenP1").hide();
@@ -33,7 +33,6 @@ $(function() {
       case "hard":
         $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=hard&type=multiple", function(data){
           questions = data;
-          debugger;
           return questions;
         })
         break;
@@ -55,7 +54,7 @@ $(function() {
       if(!$(answerBtns[i]).hasClass("correct")) {
           $(answerBtns[i]).html(ques.results[randQues].incorrect_answers[i]);
       } else {
-        continue;
+
       }
     }
     // Do this function every 5 seconds
@@ -79,7 +78,7 @@ $(function() {
         //Display the question
         $("#question").html(ques.results[randQues].question);
         $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("correct");
-        for (l = 0; l < answerBtns.length; l++) {
+        for (l = 0; l < answerBtns.length ; l++) {
           if(!$(answerBtns[l]).hasClass("correct")) {
               $(answerBtns[l]).html(ques.results[randQues].incorrect_answers[l]);
           } else {
@@ -101,14 +100,14 @@ $(function() {
   $("#startQues").click(function(){
     $(this).hide();
     $("#questions1").show();
-    showQuestions(questions);
+    showQuestionsForPlayerOne(questions);
   })
   //When answer buttons are clicked, it will look for
   $(".answerBtns").click(function(){
     if($(this).hasClass("correct")){
       alert("You are correct");
-      player1score++
-      $("#score").text("Score: " + player1score);
+      score++
+      $("#score").text("Score: " + score);
     } else {
       alert("You are incorrect");
     }
