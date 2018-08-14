@@ -51,7 +51,6 @@ $(function() {
 
     //Display the first question
     seenQuestions.push($("#question").html(ques.results[randQues].question));
-    debugger;
     //Store the answers
     answers.push(ques.results[randQues].correct_answer);
     //Store the correct answer
