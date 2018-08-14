@@ -32,7 +32,6 @@ $(function() {
       case "hard":
         $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=hard&type=multiple", function(data){
           questions = data;
-          debugger;
           return questions;
         })
         break;
