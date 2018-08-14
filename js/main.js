@@ -1,7 +1,8 @@
 $(function() {
 
-  var diff;
-  var questions;
+  var diff = "";
+  var questions = "";
+  var player1score = 0;
 
   //Hide other screens
   $("#questionsScreenP1").hide();
@@ -40,7 +41,7 @@ $(function() {
   }
 
   //Show the questions
-  function showQuestions(ques) {
+  function showQuestionsForPlayerOne(ques) {
     var quesNumber = 0;
     var answerBtns = $(".answerBtns");
     var randQues = Math.floor(Math.random() * 50);
@@ -57,7 +58,7 @@ $(function() {
         continue;
       }
     }
-    // Do this function every 10 seconds
+    // Do this function every 5 seconds
     var timer = setInterval(function() {
       if (quesNumber == 9) {
         //Stop the timer
@@ -86,7 +87,7 @@ $(function() {
           }
         }
       }
-    }, 2000);
+    }, 5000);
   }
 
   //When the user clicks the start button
@@ -96,9 +97,20 @@ $(function() {
     $("#titleScreen").hide();
     $("#questionsScreenP1").show()
   })
+  //When user wants to start a question round
   $("#startQues").click(function(){
     $(this).hide();
     $("#questions1").show();
     showQuestions(questions);
+  })
+  //When answer buttons are clicked, it will look for
+  $(".answerBtns").click(function(){
+    if($(this).hasClass("correct")){
+      alert("You are correct");
+      player1score++
+      $("#score").text("Score: " + player1score);
+    } else {
+      alert("You are incorrect");
+    }
   })
 })
