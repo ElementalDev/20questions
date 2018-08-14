@@ -32,6 +32,7 @@ $(function() {
       case "hard":
         $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=hard&type=multiple", function(data){
           questions = data;
+          debugger;
           return questions;
         })
         break;
@@ -46,25 +47,26 @@ $(function() {
     var randBtn = Math.floor(Math.random() * 4) + 1;
     //Display the first question
     $("#question").html(ques.results[randQues].question);
-    $("#answer" + randBtn).html("hello");
-
-
+    //Display the correct answer on a random button.
+    $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("answer")
+    debugger;
     // Do this function every 10 seconds
     var timer = setInterval(function() {
-      $(".answerBtns").html("");
-      //Create a new random number every time
-      randQues = Math.floor(Math.random() * 50);
-      randBtn = Math.floor(Math.random() * 4) + 1;
-      quesNumber++
-      if (quesNumber >= 9) {
+      if (quesNumber == 9) {
         //Stop the timer
-        clearInterval(timer);
         alert("Finished!");
+        clearInterval(timer);
+      } else {
+        quesNumber++
+        $(".answerBtns").html("");
+        //Create a new random number every time
+        randQues = Math.floor(Math.random() * 50);
+        randBtn = Math.floor(Math.random() * 4) + 1;
+        //Display the question
+        $("#question").html(ques.results[randQues].question);
+        $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("answer");
       }
-      //Display the question
-      $("#question").html(ques.results[randQues].question);
-      $("#answer" + randBtn).html("hello");
-    }, 2000);
+    }, 10000);
   }
 
   //When the user clicks the start button
