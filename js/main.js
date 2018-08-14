@@ -2,7 +2,8 @@ $(function() {
 
   var diff = "";
   var questions = "";
-  var score = 0;
+  var p1Score = 0;
+  var p2Score = 0;
 
   //Hide other screens
   $("#questionsScreenP1").hide();
@@ -41,11 +42,25 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerOne(ques) {
+    //Counter to stop changing questions
     var quesNumber = 0;
+    //Timer
+    var time = 5;
+    var timer = setInterval(function(){
+      time--;
+      if (time < 1){
+        time = 5;
+      }
+      $("#timeKeep").html("Time: " + time);
+    }, 1000);
     var answerBtns = $(".answerBtns");
+    //Array for answers
     var answers = [];
+    //Array for questions that have been seen to stop repeats
     var seenQuestions = [];
+    //Variable for correct answer
     var correctAnswer = "";
+    //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
     var randBtn = Math.floor(Math.random() * 4) + 1;
 
@@ -62,18 +77,25 @@ $(function() {
     for (var i = 0; i < answers.length; i++) {
       $(answerBtns[i]).html(answers[i]);
     }
+    //Assign a class to the correct answer button
     for (var i = 0; i < answerBtns.length; i++) {
       if ($(answerBtns[i]).text() == correctAnswer) {
         $(answerBtns[i]).addClass("correct");
       }
     }
-
     // Do this function every 5 seconds
-    var timer = setInterval(function() {
+    var repeat = setInterval(function() {
       if (quesNumber == 9) {
-        //Stop the timer
-        alert("Finished!");
+        //Stop the timer and the questions from changing
+        clearInterval(repeat);
         clearInterval(timer);
+        alert("Finished!");
+          $("#timeKeep").html("Time: " + "0");
+        //Store the score of player one
+        p1Score = $("#score").html();
+        $("#questionsScreenP1").hide();
+        $("#questions1").hide();
+        $("#questionsScreenP2").show();
       } else {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
@@ -122,12 +144,13 @@ $(function() {
     $("#questions1").show();
     showQuestionsForPlayerOne(questions);
   })
+
   //When answer buttons are clicked, it will look for
   $(".answerBtns").click(function(){
     if($(this).hasClass("correct")){
       alert("You are correct");
-      score++
-      $("#score").text("Score: " + score);
+      p1Score++
+      $("#score").text("Score: " + p1Score);
     } else {
       alert("You are incorrect");
     }
