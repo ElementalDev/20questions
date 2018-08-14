@@ -52,9 +52,8 @@ $(function() {
     //Display the incorrect answers in the remaining buttons
     for (var i = 0; i < answerBtns.length; i++) {
       if(!$(answerBtns[i]).hasClass("correct")) {
+        debugger;
           $(answerBtns[i]).html(ques.results[randQues].incorrect_answers[i]);
-      } else {
-
       }
     }
     // Do this function every 5 seconds
@@ -67,7 +66,7 @@ $(function() {
         //Remove class correct before going to the next question
         for (var j = 0; j < answerBtns.length; j++) {
           if($(answerBtns[j]).hasClass("correct")) {
-              $(answerBtns[j]).removeClass("correct");
+            $(answerBtns[j]).removeClass("correct");
           }
           $(answerBtns[j]).html("");
         }
@@ -81,8 +80,6 @@ $(function() {
         for (l = 0; l < answerBtns.length ; l++) {
           if(!$(answerBtns[l]).hasClass("correct")) {
               $(answerBtns[l]).html(ques.results[randQues].incorrect_answers[l]);
-          } else {
-            continue;
           }
         }
       }
