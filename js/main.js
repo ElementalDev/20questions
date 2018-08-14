@@ -19,13 +19,13 @@ $(function() {
   function getQuestions(difficulty) {
     switch (difficulty) {
       case "easy":
-          $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple", function(data){
           questions = data;
           return questions;
         })
         break;
       case "medium":
-          $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple", function(data){
           questions = data;
           return questions;
         })
@@ -43,19 +43,32 @@ $(function() {
   function showQuestionsForPlayerOne(ques) {
     var quesNumber = 0;
     var answerBtns = $(".answerBtns");
+    var answers = [];
+    var seenQuestions = [];
+    var correctAnswer = "";
     var randQues = Math.floor(Math.random() * 50);
     var randBtn = Math.floor(Math.random() * 4) + 1;
+
     //Display the first question
-    $("#question").html(ques.results[randQues].question);
-    //Display the correct answer on a random button.
-    $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("correct")
-    //Display the incorrect answers in the remaining buttons
+    seenQuestions.push($("#question").html(ques.results[randQues].question));
+    debugger;
+    //Store the answers
+    answers.push(ques.results[randQues].correct_answer);
+    //Store the correct answer
+    correctAnswer = answers[0];
+    for (var i = 0; i < 3; i++) {
+      answers.push(ques.results[randQues].incorrect_answers[i]);
+    }
+    //Display the answers
+    for (var i = 0; i < answers.length; i++) {
+      $(answerBtns[i]).html(answers[i]);
+    }
     for (var i = 0; i < answerBtns.length; i++) {
-      if(!$(answerBtns[i]).hasClass("correct")) {
-        debugger;
-          $(answerBtns[i]).html(ques.results[randQues].incorrect_answers[i]);
+      if ($(answerBtns[i]).text() == correctAnswer) {
+        $(answerBtns[i]).addClass("correct");
       }
     }
+
     // Do this function every 5 seconds
     var timer = setInterval(function() {
       if (quesNumber == 9) {
@@ -64,11 +77,12 @@ $(function() {
         clearInterval(timer);
       } else {
         //Remove class correct before going to the next question
-        for (var j = 0; j < answerBtns.length; j++) {
-          if($(answerBtns[j]).hasClass("correct")) {
-            $(answerBtns[j]).removeClass("correct");
+        for (var i = 0; i < answerBtns.length; i++) {
+          if($(answerBtns[i]).hasClass("correct")) {
+            $(answerBtns[i]).removeClass("correct");
           }
-          $(answerBtns[j]).html("");
+          $(answerBtns[i]).html("");
+          answers = [];
         }
         quesNumber++
         //Create a new random number every time
@@ -76,10 +90,20 @@ $(function() {
         randBtn = Math.floor(Math.random() * 4) + 1;
         //Display the question
         $("#question").html(ques.results[randQues].question);
-        $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("correct");
-        for (l = 0; l < answerBtns.length ; l++) {
-          if(!$(answerBtns[l]).hasClass("correct")) {
-              $(answerBtns[l]).html(ques.results[randQues].incorrect_answers[l]);
+        //Store the answers
+        answers.push(ques.results[randQues].correct_answer);
+        //Store the correct answer
+        correctAnswer = answers[0];
+        for (var i = 0; i < 3; i++) {
+          answers.push(ques.results[randQues].incorrect_answers[i]);
+        }
+        //Display the answers
+        for (var i = 0; i < answers.length; i++) {
+          $(answerBtns[i]).html(answers[i]);
+        }
+        for (var i = 0; i < answerBtns.length; i++) {
+          if ($(answerBtns[i]).text() == correctAnswer) {
+            $(answerBtns[i]).addClass("correct");
           }
         }
       }
