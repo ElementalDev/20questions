@@ -48,8 +48,15 @@ $(function() {
     //Display the first question
     $("#question").html(ques.results[randQues].question);
     //Display the correct answer on a random button.
-    $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("answer")
-    debugger;
+    $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("correct")
+    //Display the incorrect answers in the remaining buttons
+    for (var i = 0; i < answerBtns.length; i++) {
+      if(!$(answerBtns[i]).hasClass("correct")) {
+          $(answerBtns[i]).html(ques.results[randQues].incorrect_answers[i]);
+      } else {
+        continue;
+      }
+    }
     // Do this function every 10 seconds
     var timer = setInterval(function() {
       if (quesNumber == 9) {
@@ -57,16 +64,29 @@ $(function() {
         alert("Finished!");
         clearInterval(timer);
       } else {
+        //Remove class correct before going to the next question
+        for (var j = 0; j < answerBtns.length; j++) {
+          if($(answerBtns[j]).hasClass("correct")) {
+              $(answerBtns[j]).removeClass("correct");
+          }
+          $(answerBtns[j]).html("");
+        }
         quesNumber++
-        $(".answerBtns").html("");
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
         //Display the question
         $("#question").html(ques.results[randQues].question);
-        $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("answer");
+        $("#answer" + randBtn).html(ques.results[randQues].correct_answer).addClass("correct");
+        for (l = 0; l < answerBtns.length; l++) {
+          if(!$(answerBtns[l]).hasClass("correct")) {
+              $(answerBtns[l]).html(ques.results[randQues].incorrect_answers[l]);
+          } else {
+            continue;
+          }
+        }
       }
-    }, 10000);
+    }, 2000);
   }
 
   //When the user clicks the start button
