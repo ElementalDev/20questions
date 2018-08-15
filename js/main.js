@@ -82,6 +82,8 @@ $(function() {
     for (var i = 0; i < answerBtns.length; i++) {
       if ($(answerBtns[i]).text() == correctAnswer) {
         $(answerBtns[i]).addClass("correct");
+      } else {
+        $(answerBtns[i]).addClass("incorrect")
       }
     }
     // Do this function every 5 seconds
@@ -90,8 +92,8 @@ $(function() {
         //Stop the timer and the questions from changing
         clearInterval(repeat);
         clearInterval(timer);
-        alert("Finished!");
-          $("#timeKeep").html("Time: " + "0");
+        $("#question").html("Finished");
+        $("#timeKeep").html("Time: " + "0");
         //Store the score of player one
         p1Score = $("#score").html();
         $("#questionsScreenP1").hide();
@@ -100,13 +102,16 @@ $(function() {
       } else {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
-          if($(answerBtns[i]).hasClass("correct")) {
+          if ($(answerBtns[i]).hasClass("correct")) {
             $(answerBtns[i]).removeClass("correct");
+          }
+          else if ($(answerBtns[i]).hasClass("incorrect")) {
+            $(answerBtns[i]).removeClass("incorrect");
           }
           $(answerBtns[i]).html("");
           answers = [];
         }
-        quesNumber++
+        quesNumber++;
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
@@ -126,10 +131,12 @@ $(function() {
         for (var i = 0; i < answerBtns.length; i++) {
           if ($(answerBtns[i]).text() == correctAnswer) {
             $(answerBtns[i]).addClass("correct");
+          } else {
+            $(answerBtns[i]).addClass("incorrect");
           }
         }
       }
-    }, 1000);
+    }, 5000);
   }
 
   //Show the questions
@@ -173,6 +180,8 @@ $(function() {
     for (var i = 0; i < answerBtns.length; i++) {
       if ($(answerBtns[i]).text() == correctAnswer) {
         $(answerBtns[i]).addClass("correct");
+      } else {
+        $(answerBtns[i]).addClass("incorrect");
       }
     }
     // Do this function every 5 seconds
@@ -181,8 +190,8 @@ $(function() {
         //Stop the timer and the questions from changing
         clearInterval(repeat);
         clearInterval(timer);
-        alert("Finished!");
-          $("#timeKeep2").html("Time: " + "0");
+        $("#question2").html("Finished");
+        $("#timeKeep2").html("Time: " + "0");
         //Store the score of player one
         p2Score = $("#score2").html();
       } else {
@@ -190,11 +199,14 @@ $(function() {
         for (var i = 0; i < answerBtns.length; i++) {
           if($(answerBtns[i]).hasClass("correct")) {
             $(answerBtns[i]).removeClass("correct");
+            else if ($(answerBtns[i]).hasClass("incorrect")) {
+              $(answerBtns[i]).removeClass("incorrect");
+            }
           }
           $(answerBtns[i]).html("");
           answers = [];
         }
-        quesNumber++
+        quesNumber++;
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
@@ -214,6 +226,8 @@ $(function() {
         for (var i = 0; i < answerBtns.length; i++) {
           if ($(answerBtns[i]).text() == correctAnswer) {
             $(answerBtns[i]).addClass("correct");
+          } else {
+            $(answerBtns[i]).addClass("incorrect");
           }
         }
       }
@@ -226,7 +240,7 @@ $(function() {
     diff = getDifficulty();
     questions = getQuestions(diff);
     $("#titleScreen").hide();
-    $("#questionsScreenP1").show()
+    $("#questionsScreenP1").show();
   })
   //When Player 1 wants to start a question round
   $("#startQues").click(function(){
@@ -243,21 +257,21 @@ $(function() {
   //When player one answer buttons are clicked, it will look for
   $(".answerBtns").click(function(){
     if($(this).hasClass("correct")){
-      alert("You are correct");
+      $(".correct").css("border-color", "green");
       p1Score++;
       $("#score").text("Score: " + p1Score);
     } else {
-      alert("You are incorrect");
+      $(".incorrect").css("border-color", "red");
     }
   })
   //When player two answer buttons are clicked, it will look for
   $(".answerBtns2").click(function(){
     if($(this).hasClass("correct")){
-      alert("You are correct");
+      $(".correct").css("border-color", "green");
       p2Score++;
       $("#score2").text("Score: " + p2Score);
     } else {
-      alert("You are incorrect");
+      $(".incorrect").css("border-color", "red");
     }
   })
 })
