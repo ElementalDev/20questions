@@ -119,6 +119,17 @@ $(function() {
         randBtn = Math.floor(Math.random() * 4) + 1;
         //Display the question
         $("#question").html(ques.results[randQues].question);
+        //Check if the question has been seen before
+        for (var i = 0; i < seenQuestions.length; i++) {
+          if (seenQuestions[i] == ques.results[randQues].question) {
+            randQues = Math.floor(Math.random() * 50);
+            $("#question").html(ques.results[randQues].question);
+            seenQuestions.push(ques.results[randQues].question)
+          } else {
+            seenQuestions.push(ques.results[randQues].question);
+            break;
+          }
+        }
         //Store the answers
         answers.push(ques.results[randQues].correct_answer);
         //Store the correct answer
@@ -216,6 +227,18 @@ $(function() {
         randBtn = Math.floor(Math.random() * 4) + 1;
         //Display the question
         $("#question2").html(ques2.results[randQues].question);
+        //Check if the question has been seen before
+        for (var i = 0; i < seenQuestions.length; i++) {
+          if (seenQuestions[i] == ques2.results[randQues].question) {
+            randQues = Math.floor(Math.random() * 50);
+            $("#question").html(ques2.results[randQues].question);
+            seenQuestions.push(ques2.results[randQues].question)
+            break;
+          } else {
+            seenQuestions.push(ques2.results[randQues].question);
+            break;
+          }
+        }
         //Store the answers
         answers.push(ques2.results[randQues].correct_answer);
         //Store the correct answer
@@ -237,7 +260,7 @@ $(function() {
       }
     }, 5000);
   }
-  
+
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();
