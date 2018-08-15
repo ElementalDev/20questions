@@ -194,7 +194,7 @@ $(function() {
         clearInterval(timer);
         $("#question2").html("Finished");
         $("#timeKeep2").html("Time: " + "0");
-        //Store the score of player one
+        //Store the score of player two
         p2Score = $("#score2").html();
       } else {
         //Remove class correct before going to the next question
@@ -237,8 +237,7 @@ $(function() {
       }
     }, 5000);
   }
-
-
+  
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();
