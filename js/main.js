@@ -103,9 +103,11 @@ $(function() {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
           if ($(answerBtns[i]).hasClass("correct")) {
+            $(".correct").css("background-color", "");
             $(answerBtns[i]).removeClass("correct");
           }
           else if ($(answerBtns[i]).hasClass("incorrect")) {
+            $(".incorrect").css("background-color", "");
             $(answerBtns[i]).removeClass("incorrect");
           }
           $(answerBtns[i]).html("");
@@ -198,10 +200,12 @@ $(function() {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
           if($(answerBtns[i]).hasClass("correct")) {
+            $(".correct").css("background-color", "");
             $(answerBtns[i]).removeClass("correct");
-            else if ($(answerBtns[i]).hasClass("incorrect")) {
-              $(answerBtns[i]).removeClass("incorrect");
-            }
+          }
+          else if ($(answerBtns[i]).hasClass("incorrect")) {
+            $(".incorrect").css("background-color", "");
+            $(answerBtns[i]).removeClass("incorrect");
           }
           $(answerBtns[i]).html("");
           answers = [];
@@ -255,23 +259,23 @@ $(function() {
     showQuestionsForPlayerTwo(questions);
   })
   //When player one answer buttons are clicked, it will look for
-  $(".answerBtns").click(function(){
+  $(".answerBtns").on("click", function(){
     if($(this).hasClass("correct")){
-      $(".correct").css("border-color", "green");
+      $(".correct").css("background-color", "green");
       p1Score++;
       $("#score").text("Score: " + p1Score);
     } else {
-      $(".incorrect").css("border-color", "red");
+      $(".incorrect").css("background-color", "red");
     }
   })
   //When player two answer buttons are clicked, it will look for
-  $(".answerBtns2").click(function(){
+  $(".answerBtns2").on("click", function(){
     if($(this).hasClass("correct")){
-      $(".correct").css("border-color", "green");
+      $(".correct").css("background-color", "green");
       p2Score++;
       $("#score2").text("Score: " + p2Score);
     } else {
-      $(".incorrect").css("border-color", "red");
+      $(".incorrect").css("background-color", "red");
     }
   })
 })
