@@ -153,7 +153,7 @@ $(function() {
           }
         }
       }
-    }, 1000);
+    }, 5000);
   }
 
   //Show the questions
@@ -280,8 +280,6 @@ $(function() {
       $("#announceWinner").html("Player 2 Wins! More rounds coming soon.")
     }
 }
-
-
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();
@@ -292,12 +290,14 @@ $(function() {
   //When Player 1 wants to start a question round
   $("#startQues").click(function(){
     $(this).hide();
+    $("#playerTitle1").hide();
     $("#questions1").show();
     showQuestionsForPlayerOne(questions);
   })
   //When Player 2 wants to start a question round
   $("#startQues2").click(function(){
     $(this).hide();
+    $("#playerTitle2").hide();
     $("#questions2").show();
     showQuestionsForPlayerTwo(questions);
   })
@@ -308,7 +308,7 @@ $(function() {
       p1Score++;
       $("#score").text("Score: " + p1Score);
     } else {
-      $(".incorrect").css("background-color", "red");
+      $(this).css("background-color", "red");
     }
   })
   //When player two answer buttons are clicked, it will look for
