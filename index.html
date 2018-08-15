@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>QDA Quiz</title>
+  </head>
+  <body>
+    <div id="titleScreen" class="container-flex">
+      <h1 id="title">QDA Quiz</h1>
+      <form class="difficultyForm" action="index.html" method="post">
+        <h2>Difficulty</h2>
+        <label for="easy">Easy</label>
+        <input id="easy" class="diffBtns" type="radio" name="difficulty" value="easy">
+        <label for="medium">Medium</label>
+        <input id="medium" class="diffBtns" type="radio" name="difficulty" value="medium">
+        <label for="hard">Hard</label>
+        <input id="hard" class="diffBtns" type="radio" name="difficulty" value="hard">
+      </form>
+      <button id="startBtn" type="button" name="button">Start</button>
+    </div>
+    <div id="questionsScreenP1" class="container-flex">
+      <div class="container-flex">
+        <div class="row">
+          <div  id="roundTitle" class="col-sm-4">Round 1</div>
+          <div id="score" class="col-sm-4">Score: 0</div>
+          <div id="timeKeep" class="col-sm-4">Time: 0</div>
+        </div>
+      </div>
+      <h2>Player 1 Start</h2>
+      <button id="startQues" type="button" name="button">Start the game</button>
+      <div id="questions1" class="container">
+        <div class="row">
+          <h2 id="question">Question:</h2>
+        </div>
+        <div class="row">
+          <table class="answerTable">
+            <tr>
+              <td>
+                <button class="answerBtns" id="answer1" type="button" name="button"></button>
+              </td>
+              <td>
+                <button class="answerBtns" id="answer2" type="button" name="button"></button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="answerBtns" id="answer3" type="button" name="button"></button>
+              </td>
+              <td>
+                <button class="answerBtns" id="answer4" type="button" name="button"></button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="questionsScreenP2" class="container-flex">
+      <div class="container-flex">
+        <div class="row">
+          <div  id="roundTitle" class="col-sm-4">Round 1</div>
+          <div id="score2" class="col-sm-4">Score:</div>
+          <div id="timeKeep2" class="col-sm-4">Time:</div>
+        </div>
+      </div>
+      <h2>Player 2 Start</h2>
+      <button id="startQues2" type="button" name="button">Start the game</button>
+      <div id="questions2" class="container">
+        <div class="row">
+          <h2 id="question2">Question</h2>
+        </div>
+        <div class="row">
+          <table class="answerTable">
+            <tr>
+              <td>
+                <button class="answerBtns2" id="answer1" type="button" name="button"></button>
+              </td>
+              <td>
+                <button class="answerBtns2" id="answer2" type="button" name="button"></button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="answerBtns2" id="answer3" type="button" name="button"></button>
+              </td>
+              <td>
+                <button class="answerBtns2" id="answer4" type="button" name="button"></button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="winnerPanel" class="container">
+      <h2 id="announceWinner"></h2>
+    </div>
+  </body>
+</html>
