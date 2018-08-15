@@ -43,7 +43,6 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerOne(ques) {
-    var checkQuestions = false;
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -64,8 +63,6 @@ $(function() {
     var correctAnswer = "";
     //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
-    var randBtn = Math.floor(Math.random() * 4) + 1;
-
     //Display the first question
     seenQuestions.push(randQues);
     $("#question").html(ques.results[randQues].question)
@@ -90,8 +87,9 @@ $(function() {
     }
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
-      if (quesNumber == 9) {
+      if (quesNumber == 19) {
         //Stop the timer and the questions from changing
+        debugger;
         clearInterval(repeat);
         clearInterval(timer);
         $("#question").html("Finished");
@@ -118,7 +116,6 @@ $(function() {
         quesNumber++;
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
-        randBtn = Math.floor(Math.random() * 4) + 1;
         //Stores the number of the random question
         seenQuestions.push(randQues);
         //Check if the question has been seen before
@@ -158,7 +155,6 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerTwo(ques2) {
-    var checkQuestions = false;
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -179,9 +175,8 @@ $(function() {
     var correctAnswer = "";
     //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
-    var randBtn = Math.floor(Math.random() * 4) + 1;
+    //Display the first question
     seenQuestions.push(randQues);
-    //Display the question
     $("#question2").html(ques2.results[randQues].question);
     //Store the answers
     answers.push(ques2.results[randQues].correct_answer);
@@ -204,7 +199,7 @@ $(function() {
     }
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
-      if (quesNumber == 9) {
+      if (quesNumber == 19) {
         //Stop the timer and the questions from changing
         clearInterval(repeat);
         clearInterval(timer);
@@ -235,7 +230,6 @@ $(function() {
         quesNumber++;
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
-        randBtn = Math.floor(Math.random() * 4) + 1;
         seenQuestions.push(randQues);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
