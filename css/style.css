@@ -69,6 +69,14 @@ td {
 .answerBtns, .answerBtns2 {
   height: 60px;
   width: 500px;
-  font-size: 30px;
+  font-size: 20px;
 
+}
+
+/* Winner announcement */
+
+#announceWinner {
+  text-align: center;
+  margin-top: 150px;
+  font-size: 150px;
 }

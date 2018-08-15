@@ -274,16 +274,21 @@ $(function() {
 
   function getWinner(scoreP1, scoreP2){
     if (scoreP1 > scoreP2) {
-      $("#announceWinner").html("Player 1 Wins! More rounds coming soon.")
+      $("#announceWinner").html("Player 1 Wins!")
     }
-    else {
-      $("#announceWinner").html("Player 2 Wins! More rounds coming soon.")
+    else if (scoreP1 < scoreP2) {
+      $("#announceWinner").html("Player 2 Wins!")
+    } else {
+      $("#announceWinner").html("ITS A DRAW!")
     }
 }
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();
     questions = getQuestions(diff);
+    if (questions == "") {
+      questions = getQuestions(diff);
+    }
     $("#titleScreen").hide();
     $("#questionsScreenP1").show();
   })
