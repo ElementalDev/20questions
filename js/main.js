@@ -211,6 +211,12 @@ $(function() {
         $("#timeKeep2").html("Time: " + "0");
         //Store the score of player two
         p2Score = $("#score2").html();
+        //Hide the questions screen
+        $("#questionsScreenP2").hide();
+        //Show the winners panel
+        $("#winnerPanel").show();
+        //Show the winner of the round
+        getWinner(p1Score, p2Score);
       } else {
         //Remove class correct before going to the next question
         for (var i = 0; i < answerBtns.length; i++) {
@@ -265,6 +271,16 @@ $(function() {
       }
     }, 5000);
   }
+
+  function getWinner(scoreP1, scoreP2){
+    if (scoreP1 > scoreP2) {
+      $("#announceWinner").html("Player 1 Wins! More rounds coming soon.")
+    }
+    else {
+      $("#announceWinner").html("Player 2 Wins! More rounds coming soon.")
+    }
+}
+
 
   //When the user clicks the start button
   $("#startBtn").click(function (){
