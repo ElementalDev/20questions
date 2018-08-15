@@ -21,19 +21,19 @@ $(function() {
   function getQuestions(difficulty) {
     switch (difficulty) {
       case "easy":
-        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&difficulty=easy&type=multiple", function(data){
           questions = data;
           return questions;
         })
         break;
       case "medium":
-        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple", function(data){
           questions = data;
           return questions;
         })
         break;
       case "hard":
-        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=hard&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&difficulty=hard&type=multiple", function(data){
           questions = data;
           return questions;
         })
@@ -43,6 +43,7 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerOne(ques) {
+    var checkQuestions = false;
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -120,13 +121,10 @@ $(function() {
         randBtn = Math.floor(Math.random() * 4) + 1;
         //Stores the number of the random question
         seenQuestions.push(randQues);
-        //Display the question
-        $("#question").html(ques.results[randQues].question);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
           if (seenQuestions[i] == randQues) {
             randQues = Math.floor(Math.random() * 50);
-            $("#question").html(ques.results[randQues].question);
             seenQuestions.push(randQues);
             continue;
           } else {
@@ -134,6 +132,8 @@ $(function() {
             break;
           }
         }
+        //Display the question
+        $("#question").html(ques.results[randQues].question);
         //Store the answers
         answers.push(ques.results[randQues].correct_answer);
         //Store the correct answer
@@ -158,6 +158,7 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerTwo(ques2) {
+    var checkQuestions = false;
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -236,20 +237,19 @@ $(function() {
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
         seenQuestions.push(randQues);
-        //Display the question
-        $("#question2").html(ques2.results[randQues].question);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
           if (seenQuestions[i] == randQues) {
             randQues = Math.floor(Math.random() * 50);
-            $("#question2").html(ques2.results[randQues].question);
             seenQuestions.push(randQues);
             continue;
           } else {
             seenQuestions.push(randQues);
-            break;
+            break
           }
         }
+        //Display the question
+        $("#question2").html(ques2.results[randQues].question);
         //Store the answers
         answers.push(ques2.results[randQues].correct_answer);
         //Store the correct answer
@@ -272,6 +272,7 @@ $(function() {
     }, 5000);
   }
 
+  //Get the winner
   function getWinner(scoreP1, scoreP2){
     if (scoreP1 > scoreP2) {
       $("#announceWinner").html("Player 1 Wins!")
