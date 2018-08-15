@@ -66,7 +66,8 @@ $(function() {
     var randBtn = Math.floor(Math.random() * 4) + 1;
 
     //Display the first question
-    seenQuestions.push($("#question").html(ques.results[randQues].question));
+    seenQuestions.push(randQues);
+    $("#question").html(ques.results[randQues].question)
     //Store the answers
     answers.push(ques.results[randQues].correct_answer);
     //Store the correct answer
@@ -117,16 +118,19 @@ $(function() {
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
+        //Stores the number of the random question
+        seenQuestions.push(randQues);
         //Display the question
         $("#question").html(ques.results[randQues].question);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
-          if (seenQuestions[i] == ques.results[randQues].question) {
+          if (seenQuestions[i] == randQues) {
             randQues = Math.floor(Math.random() * 50);
             $("#question").html(ques.results[randQues].question);
-            seenQuestions.push(ques.results[randQues].question)
+            seenQuestions.push(randQues);
+            continue;
           } else {
-            seenQuestions.push(ques.results[randQues].question);
+            seenQuestions.push(randQues);
             break;
           }
         }
@@ -149,7 +153,7 @@ $(function() {
           }
         }
       }
-    }, 5000);
+    }, 1000);
   }
 
   //Show the questions
@@ -175,9 +179,9 @@ $(function() {
     //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
     var randBtn = Math.floor(Math.random() * 4) + 1;
-
-    //Display the first question
-    seenQuestions.push($("#question2").html(ques2.results[randQues].question));
+    seenQuestions.push(randQues);
+    //Display the question
+    $("#question2").html(ques2.results[randQues].question);
     //Store the answers
     answers.push(ques2.results[randQues].correct_answer);
     //Store the correct answer
@@ -225,17 +229,18 @@ $(function() {
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
         randBtn = Math.floor(Math.random() * 4) + 1;
+        seenQuestions.push(randQues);
         //Display the question
         $("#question2").html(ques2.results[randQues].question);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
-          if (seenQuestions[i] == ques2.results[randQues].question) {
+          if (seenQuestions[i] == randQues) {
             randQues = Math.floor(Math.random() * 50);
-            $("#question").html(ques2.results[randQues].question);
-            seenQuestions.push(ques2.results[randQues].question)
-            break;
+            $("#question2").html(ques2.results[randQues].question);
+            seenQuestions.push(randQues);
+            continue;
           } else {
-            seenQuestions.push(ques2.results[randQues].question);
+            seenQuestions.push(randQues);
             break;
           }
         }
