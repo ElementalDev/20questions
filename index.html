@@ -11,6 +11,7 @@
     <title>QDA Quiz</title>
   </head>
   <body>
+    <!-- Title screen -->
     <div id="titleScreen" class="container-flex">
       <h1 id="title">QDA Quiz</h1>
       <form class="difficultyForm" action="index.html" method="post">
@@ -24,80 +25,75 @@
       </form>
       <button id="startBtn" type="button" name="button">Start</button>
     </div>
+    <!-- Player 1 screen -->
     <div id="questionsScreenP1" class="container-flex">
-      <div class="container-flex">
+      <div class="container">
+        <!-- Screen header -->
         <div class="row">
           <div  id="roundTitle" class="col-sm-4">Round 1</div>
           <div id="score" class="col-sm-4">Score: 0</div>
           <div id="timeKeep" class="col-sm-4">Time: 0</div>
         </div>
       </div>
-      <h2>Player 1 Start</h2>
+      <!-- Start button -->
+      <h2 id="playerTitle1">Player 1 Start</h2>
       <button id="startQues" type="button" name="button">Start the game</button>
       <div id="questions1" class="container">
+        <!-- Question -->
         <div class="row">
           <h2 id="question">Question:</h2>
         </div>
         <div class="row">
-          <table class="answerTable">
-            <tr>
-              <td>
-                <button class="answerBtns" id="answer1" type="button" name="button"></button>
-              </td>
-              <td>
-                <button class="answerBtns" id="answer2" type="button" name="button"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button class="answerBtns" id="answer3" type="button" name="button"></button>
-              </td>
-              <td>
-                <button class="answerBtns" id="answer4" type="button" name="button"></button>
-              </td>
-            </tr>
-          </table>
+          <!-- Answer buttons -->
+          <div class="answerTable">
+            <button class="answerBtns" id="answer1" type="button" name="button"></button>
+            <button class="answerBtns" id="answer2" type="button" name="button"></button>
+            <button class="answerBtns" id="answer3" type="button" name="button"></button>
+            <button class="answerBtns" id="answer4" type="button" name="button"></button>
+          </div>
         </div>
       </div>
     </div>
+    <!-- Player 2 screen -->
     <div id="questionsScreenP2" class="container-flex">
-      <div class="container-flex">
+      <div class="container">
+        <!-- Screen header -->
         <div class="row">
           <div  id="roundTitle" class="col-sm-4">Round 1</div>
-          <div id="score2" class="col-sm-4">Score:</div>
-          <div id="timeKeep2" class="col-sm-4">Time:</div>
+          <div id="score2" class="col-sm-4">Score: 0</div>
+          <div id="timeKeep2" class="col-sm-4">Time: 0</div>
         </div>
       </div>
-      <h2>Player 2 Start</h2>
+      <!-- Start Button -->
+      <h2 id="playerTitle2">Player 2 Start</h2>
       <button id="startQues2" type="button" name="button">Start the game</button>
       <div id="questions2" class="container">
+        <!-- Question -->
         <div class="row">
           <h2 id="question2">Question</h2>
         </div>
         <div class="row">
-          <table class="answerTable">
-            <tr>
-              <td>
-                <button class="answerBtns2" id="answer1" type="button" name="button"></button>
-              </td>
-              <td>
-                <button class="answerBtns2" id="answer2" type="button" name="button"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button class="answerBtns2" id="answer3" type="button" name="button"></button>
-              </td>
-              <td>
-                <button class="answerBtns2" id="answer4" type="button" name="button"></button>
-              </td>
-            </tr>
-          </table>
+          <!-- Answer buttons -->
+          <div class="answerTable">
+            <button class="answerBtns2" id="answer1" type="button" name="button"></button>
+            <button class="answerBtns2" id="answer2" type="button" name="button"></button>
+            <button class="answerBtns2" id="answer3" type="button" name="button"></button>
+            <button class="answerBtns2" id="answer4" type="button" name="button"></button>
+          </div>
         </div>
       </div>
     </div>
+    <!-- Displays the winner -->
     <div id="winnerPanel" class="container">
       <h2 id="announceWinner"></h2>
-    </div>
+      <form id="nameForm" action="" method="post">
+        <input id="nameInput" type="text" name="" value="" placeholder="Enter Your Name...">
+        <input type="submit" value="To the leaderboard!">
+      </form>
+      <table id="leaderboard">
+        <tr id="leaderBoardTitle">
+          <td colspan="2">Leaderboard</td>
+        </tr>
+    </table>
   </body>
 </html>

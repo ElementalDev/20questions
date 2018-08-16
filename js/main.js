@@ -1,9 +1,9 @@
 $(function() {
-
   var diff = "";
   var questions = "";
   var p1Score = 0;
   var p2Score = 0;
+  var winner;
 
   //Hide other screens
   $("#questionsScreenP1").hide();
@@ -21,19 +21,19 @@ $(function() {
   function getQuestions(difficulty) {
     switch (difficulty) {
       case "easy":
-        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&difficulty=easy&type=multiple", function(data){
           questions = data;
           return questions;
         })
         break;
       case "medium":
-        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple", function(data){
           questions = data;
           return questions;
         })
         break;
       case "hard":
-        $.get("https://opentdb.com/api.php?amount=50&category=9&difficulty=hard&type=multiple", function(data){
+        $.get("https://opentdb.com/api.php?amount=50&difficulty=hard&type=multiple", function(data){
           questions = data;
           return questions;
         })
@@ -63,8 +63,6 @@ $(function() {
     var correctAnswer = "";
     //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
-    var randBtn = Math.floor(Math.random() * 4) + 1;
-
     //Display the first question
     seenQuestions.push(randQues);
     $("#question").html(ques.results[randQues].question)
@@ -84,12 +82,14 @@ $(function() {
       if ($(answerBtns[i]).text() == correctAnswer) {
         $(answerBtns[i]).addClass("correct");
       } else {
-        $(answerBtns[i]).addClass("incorrect")
+        $(answerBtns[i]).addClass("incorrect");
       }
     }
+
+    $(".answerBtns").on("click", buttonClickPlayerOne);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
-      if (quesNumber == 9) {
+      if (quesNumber == 19) {
         //Stop the timer and the questions from changing
         clearInterval(repeat);
         clearInterval(timer);
@@ -117,23 +117,16 @@ $(function() {
         quesNumber++;
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
-        randBtn = Math.floor(Math.random() * 4) + 1;
-        //Stores the number of the random question
-        seenQuestions.push(randQues);
-        //Display the question
-        $("#question").html(ques.results[randQues].question);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
           if (seenQuestions[i] == randQues) {
             randQues = Math.floor(Math.random() * 50);
-            $("#question").html(ques.results[randQues].question);
-            seenQuestions.push(randQues);
-            continue;
-          } else {
-            seenQuestions.push(randQues);
-            break;
           }
         }
+        //Store the random question
+        seenQuestions.push(randQues);
+        //Display the question
+        $("#question").html(ques.results[randQues].question);
         //Store the answers
         answers.push(ques.results[randQues].correct_answer);
         //Store the correct answer
@@ -152,8 +145,9 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
+        $(".answerBtns").on("click", buttonClickPlayerOne);
       }
-    }, 1000);
+    }, 5000);
   }
 
   //Show the questions
@@ -178,9 +172,8 @@ $(function() {
     var correctAnswer = "";
     //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
-    var randBtn = Math.floor(Math.random() * 4) + 1;
+    //Display the first question
     seenQuestions.push(randQues);
-    //Display the question
     $("#question2").html(ques2.results[randQues].question);
     //Store the answers
     answers.push(ques2.results[randQues].correct_answer);
@@ -201,9 +194,10 @@ $(function() {
         $(answerBtns[i]).addClass("incorrect");
       }
     }
+    $(".answerBtns2").on("click", buttonClickPlayerTwo);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
-      if (quesNumber == 9) {
+      if (quesNumber == 19) {
         //Stop the timer and the questions from changing
         clearInterval(repeat);
         clearInterval(timer);
@@ -234,22 +228,16 @@ $(function() {
         quesNumber++;
         //Create a new random number every time
         randQues = Math.floor(Math.random() * 50);
-        randBtn = Math.floor(Math.random() * 4) + 1;
-        seenQuestions.push(randQues);
-        //Display the question
-        $("#question2").html(ques2.results[randQues].question);
         //Check if the question has been seen before
         for (var i = 0; i < seenQuestions.length; i++) {
           if (seenQuestions[i] == randQues) {
             randQues = Math.floor(Math.random() * 50);
-            $("#question2").html(ques2.results[randQues].question);
-            seenQuestions.push(randQues);
-            continue;
-          } else {
-            seenQuestions.push(randQues);
-            break;
           }
         }
+        //Store the random question
+        seenQuestions.push(randQues);
+        //Display the question
+        $("#question2").html(ques2.results[randQues].question);
         //Store the answers
         answers.push(ques2.results[randQues].correct_answer);
         //Store the correct answer
@@ -268,57 +256,95 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
+        $(".answerBtns2").on("click", buttonClickPlayerTwo);
       }
     }, 5000);
   }
 
-  function getWinner(scoreP1, scoreP2){
+  //Get the winner
+  function getWinner(scoreP1, scoreP2) {
     if (scoreP1 > scoreP2) {
-      $("#announceWinner").html("Player 1 Wins! More rounds coming soon.")
+      $("#announceWinner").html("Player 1 Wins!")
+      winner = "1";
     }
-    else {
-      $("#announceWinner").html("Player 2 Wins! More rounds coming soon.")
+    else if (scoreP1 < scoreP2) {
+      $("#announceWinner").html("Player 2 Wins!")
+      winner = "2";
+    } else {
+      $("#announceWinner").html("ITS A DRAW!")
+      winner = "0";
     }
-}
+  }
 
+  //Create the leaderboard
+  function createLeaderboard(name, score) {
+    var addRow;
+    var winners = [];
+
+    for (var i = 0; i < itemGet.length; i++) {
+      winners[i] = itemGet;
+      console.log(winners[i]);
+    }
+  }
+
+  //When player one answer buttons are clicked, it will look for
+  function buttonClickPlayerOne(){
+    if($(".answerBtns").hasClass("correct")){
+      $(".correct").css("background-color", "green");
+      p1Score++;
+      $("#score").html("Score: " + p1Score);
+    } else {
+      $(".answerBtns").css("background-color", "red");
+    }
+    $(".answerBtns").off("click");
+  }
+  //When player two answer buttons are clicked, it will look for
+  function buttonClickPlayerTwo(){
+    if($(".answerBtns2").hasClass("correct")){
+      $(".correct").css("background-color", "green");
+      p1Score++;
+      $("#score").html("Score: " + p1Score);
+    } else {
+      $(".answerBtns2").css("background-color", "red");
+    }
+    $(".answerBtns2").off("click");
+  }
 
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();
     questions = getQuestions(diff);
+    if (questions == "") {
+      questions = getQuestions(diff);
+    }
     $("#titleScreen").hide();
     $("#questionsScreenP1").show();
   })
   //When Player 1 wants to start a question round
   $("#startQues").click(function(){
     $(this).hide();
+    $("#playerTitle1").hide();
     $("#questions1").show();
     showQuestionsForPlayerOne(questions);
   })
   //When Player 2 wants to start a question round
   $("#startQues2").click(function(){
     $(this).hide();
+    $("#playerTitle2").hide();
     $("#questions2").show();
     showQuestionsForPlayerTwo(questions);
   })
-  //When player one answer buttons are clicked, it will look for
-  $(".answerBtns").on("click", function(){
-    if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "green");
-      p1Score++;
-      $("#score").text("Score: " + p1Score);
-    } else {
-      $(".incorrect").css("background-color", "red");
+
+  $("input[type='submit']").on("click", function(event){
+    event.preventDefault();
+    var name = $("#nameInput").val();
+    if (winner == "1") {
+      localStorage.setItem(name, p1Score);
+      createLeaderboard(localStorage.getItem(name))
     }
-  })
-  //When player two answer buttons are clicked, it will look for
-  $(".answerBtns2").on("click", function(){
-    if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "green");
-      p2Score++;
-      $("#score2").text("Score: " + p2Score);
-    } else {
-      $(".incorrect").css("background-color", "red");
+    else if (winner == "2") {
+      localStorage.setItem(name, p2Score)
+      createLeaderboard(localStorage.getItem(name))
     }
   })
 })
