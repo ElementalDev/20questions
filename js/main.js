@@ -44,6 +44,7 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerOne(ques) {
+    var shuffledAnswers;
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -75,8 +76,8 @@ $(function() {
       answers.push(ques.results[randQues].incorrect_answers[i]);
     }
     //Display the answers
-    for (var i = 0; i < answers.length; i++) {
-      $(answerBtns[i]).html(answers[i]);
+    for (var i = 0; i < shuffledAnswers.length; i++) {
+      $(answerBtns[i]).html(shuffledAnswers[i]);
     }
     //Assign a class to the correct answer button
     for (var i = 0; i < answerBtns.length; i++) {
@@ -135,8 +136,8 @@ $(function() {
           answers.push(ques.results[randQues].incorrect_answers[i]);
         }
         //Display the answers
-        for (var i = 0; i < answers.length; i++) {
-          $(answerBtns[i]).html(answers[i]);
+        for (var i = 0; i < shuffledAnswers.length; i++) {
+          $(answerBtns[i]).html(shuffledAnswers[i]);
         }
         for (var i = 0; i < answerBtns.length; i++) {
           if ($(answerBtns[i]).text() == correctAnswer) {
@@ -145,9 +146,9 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
-        $(answerBtns).on("click", buttonClickPlayerOne);
       }
-    }, 1000);
+      $(answerBtns).on("click", buttonClickPlayerOne);
+    }, 5000);
   }
 
   //Show the questions
@@ -162,7 +163,7 @@ $(function() {
         time = 5;
       }
       $("#timeKeep2").html("Time: " + time);
-    }, 1000);
+    }, 500);
     var answerBtns = $(".answerBtns2");
     //Array for answers
     var answers = [];
@@ -256,9 +257,9 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
-        $(answerBtns).on("click", buttonClickPlayerTwo);
       }
-    }, 1000);
+      $(answerBtns).on("click", buttonClickPlayerTwo);
+    }, 500);
   }
 
   //Get the winner
@@ -276,32 +277,16 @@ $(function() {
     }
   }
 
-  //Create the leaderboard
-  function createLeaderboard(name, itemGet) {
-    var addRow = $("<tr><td>" + name + "</td><td>" + score + "</td></tr>");
-    var winners = [];
-
-    for (var i = 0; i < localStorage.length; i++) {
-      if ((i % 2) == 0) {
-        winners[i] = name;
-      } else {
-        winners[i] = itemGet;
-      }
-    }
-    console.log(winners);
-  }
-
   //When player one answer buttons are clicked, it will look for
   function buttonClickPlayerOne(){
+    ;
     if($(this).hasClass("correct")){
       $(".correct").css("background-color", "#00FF0088");
-      $(".incorrect").css("background-color", "#FF000088");
       p1Score++;
       $("#score").html("Score: " + p1Score);
     }
     else if ($(this).hasClass("incorrect")) {
-      $(".correct").css("background-color", "#00FF0088");
-      $(".incorrect").css("background-color", "#FF000088");
+      $(this).css("background-color", "#FF000088");
     }
     $(".answerBtns").off("click");
   }
@@ -315,10 +300,23 @@ $(function() {
       $("#score2").html("Score: " + p2Score);
     }
     else if ($(this).hasClass("incorrect")) {
-      $(".correct").css("background-color", "#00FF0088");
-      $(".incorrect").css("background-color", "#FF000088");
+      $(this).css("background-color", "#FF000088");
     }
     $(".answerBtns2").off("click");
+  }
+
+  //Create the leaderboard
+  function createLeaderboard() {
+    var container = $("#leaderboard");
+    var keys = Object.getOwnPropertyNames(localStorage);
+    var values = [];
+
+    for (var items in localStorage){
+      values.push(localStorage[items]);
+    }
+      for (var i = 0; i < keys.length; i++) {
+        container.append("<tr class='entry'><td class='name'>" + keys[i] + "</td><td>" + values[i] + "</td><tr>");
+    }
   }
 
   //When the user clicks the start button
@@ -331,6 +329,7 @@ $(function() {
     $("#titleScreen").hide();
     $("#questionsScreenP1").show();
   })
+
   //When Player 1 wants to start a question round
   $("#startQues").click(function(){
     $(this).hide();
@@ -338,6 +337,7 @@ $(function() {
     $("#questions1").show();
     showQuestionsForPlayerOne(questions);
   })
+
   //When Player 2 wants to start a question round
   $("#startQues2").click(function(){
     $(this).hide();
@@ -345,18 +345,19 @@ $(function() {
     $("#questions2").show();
     showQuestionsForPlayerTwo(questions);
   })
+
   //Store user name in local storage for leaderboard
   $("input[type='submit']").on("click", function(event){
+    var done = false;
     event.preventDefault();
     var name = $("#nameInput").val();
     if (winner == "1") {
-      debugger;
       localStorage.setItem(name, p1Score);
-      createLeaderboard(name, localStorage.getItem(name))
+      createLeaderboard();
     }
     else if (winner == "2") {
       localStorage.setItem(name, p2Score)
-      createLeaderboard(name, localStorage.getItem(name))
+      createLeaderboard()
     }
   })
 })
