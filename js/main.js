@@ -75,6 +75,8 @@ $(function() {
     for (var i = 0; i < 3; i++) {
       answers.push(ques.results[randQues].incorrect_answers[i]);
     }
+    //Shuffle the answers
+    shuffledAnswers = shuffleArray(answers);
     //Display the answers
     for (var i = 0; i < shuffledAnswers.length; i++) {
       $(answerBtns[i]).html(shuffledAnswers[i]);
@@ -82,8 +84,10 @@ $(function() {
     //Assign a class to the correct answer button
     for (var i = 0; i < answerBtns.length; i++) {
       if ($(answerBtns[i]).text() == correctAnswer) {
+        //Assign the correct answer the class .correct
         $(answerBtns[i]).addClass("correct");
       } else {
+        //Assign all other answers the class .incorrect
         $(answerBtns[i]).addClass("incorrect");
       }
     }
@@ -135,14 +139,19 @@ $(function() {
         for (var i = 0; i < 3; i++) {
           answers.push(ques.results[randQues].incorrect_answers[i]);
         }
-        //Display the answers
+        //Shuffle the answers
+        shuffledAnswers = shuffleArray(answers);
+        //Display the shuffled answers
         for (var i = 0; i < shuffledAnswers.length; i++) {
           $(answerBtns[i]).html(shuffledAnswers[i]);
         }
+        //Go through the answers and find the correct one
         for (var i = 0; i < answerBtns.length; i++) {
           if ($(answerBtns[i]).text() == correctAnswer) {
+            //Assign the correct answer the class .correct
             $(answerBtns[i]).addClass("correct");
           } else {
+            //Assign all other answers the class .incorrect
             $(answerBtns[i]).addClass("incorrect");
           }
         }
@@ -262,15 +271,34 @@ $(function() {
     }, 500);
   }
 
+  //Shuffles the array of answers
+  function shuffleArray(array) {
+    //Go through all answers in array
+    for (var i = array.length - 1; i > 0; i--) {
+        //Create a random index
+        var j = Math.floor(Math.random() * (i + 1));
+        //Temporarily assign the current index value
+        var temp = array[i];
+        //Assign the current index with the value of the random index
+        array[i] = array[j];
+        //Assign the value of temp to the random index
+        array[j] = temp;
+    }
+    return array;
+  }
+
   //Get the winner
   function getWinner(scoreP1, scoreP2) {
+    //If player 1 scored less than player 2
     if (scoreP1 > scoreP2) {
       $("#announceWinner").html("Player 1 Wins!")
       winner = "1";
     }
+    //If player 2 scored less than player 1
     else if (scoreP1 < scoreP2) {
       $("#announceWinner").html("Player 2 Wins!")
       winner = "2";
+    //If its a draw
     } else {
       $("#announceWinner").html("ITS A DRAW!")
       winner = "0";
