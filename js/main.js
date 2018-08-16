@@ -10,7 +10,7 @@ $(function() {
   $("#questionsScreenP2").hide();
   $("#questions1").hide();
   $("#questions2").hide();
-  $("#winnerPanel").hide();
+  $("#winnerPanel").show();
 
   //Get and return the difficulty from the radio buttons
   function getDifficulty() {
@@ -260,16 +260,26 @@ $(function() {
   }
 
   //Get the winner
-  function getWinner(scoreP1, scoreP2){
+  function getWinner(scoreP1, scoreP2) {
+    var winner;
     if (scoreP1 > scoreP2) {
       $("#announceWinner").html("Player 1 Wins!")
+      winner = "1";
     }
     else if (scoreP1 < scoreP2) {
       $("#announceWinner").html("Player 2 Wins!")
+      winner = "2";
     } else {
       $("#announceWinner").html("ITS A DRAW!")
+      winner = "0";
     }
-}
+    return winner;
+  }
+
+  function createLeaderboard() {
+    
+  }
+
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();

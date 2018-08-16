@@ -57,10 +57,6 @@ button:hover {
   text-align: center;
 }
 
-td {
-  padding: 20px;
-}
-
 .answerTable {
   margin: auto;
   margin-top: 50px;
@@ -70,7 +66,6 @@ td {
   height: 60px;
   width: 500px;
   font-size: 20px;
-
 }
 
 /* Winner announcement */
@@ -79,4 +74,48 @@ td {
   text-align: center;
   margin-top: 175px;
   font-size: 150px;
+}
+
+#nameForm {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+input[type="text"] {
+  font-size: 30px;
+  border-radius: 200px;
+  border: 1px solid black;
+  height: 70px;
+  width: 500px;
+  padding-left: 50px;
+}
+
+input[type="submit"] {
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 70px;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 200px;
+  box-shadow: 0px 2px 10px 1px;
+}
+
+#leaderboard {
+  border: 1px solid black;
+  margin: auto;
+  width: 500px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#leaderBoardTitle {
+  font-size: 40px;
+  border: 1px solid black;
+}
+
+#name {
+  border: 1px solid black;
+  padding-left: 20px;
+  text-align: left;
 }
