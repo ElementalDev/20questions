@@ -1,4 +1,5 @@
 $(function() {
+
   var diff = "";
   var questions = "";
   var p1Score = 0;
@@ -85,8 +86,7 @@ $(function() {
         $(answerBtns[i]).addClass("incorrect");
       }
     }
-
-    $(".answerBtns").on("click", buttonClickPlayerOne);
+    $(answerBtns).on("click", buttonClickPlayerOne);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
@@ -145,9 +145,9 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
-        $(".answerBtns").on("click", buttonClickPlayerOne);
+        $(answerBtns).on("click", buttonClickPlayerOne);
       }
-    }, 5000);
+    }, 1000);
   }
 
   //Show the questions
@@ -194,7 +194,7 @@ $(function() {
         $(answerBtns[i]).addClass("incorrect");
       }
     }
-    $(".answerBtns2").on("click", buttonClickPlayerTwo);
+    $(answerBtns).on("click", buttonClickPlayerTwo);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
@@ -256,9 +256,9 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
-        $(".answerBtns2").on("click", buttonClickPlayerTwo);
+        $(answerBtns).on("click", buttonClickPlayerTwo);
       }
-    }, 5000);
+    }, 1000);
   }
 
   //Get the winner
@@ -277,35 +277,46 @@ $(function() {
   }
 
   //Create the leaderboard
-  function createLeaderboard(name, score) {
+  function createLeaderboard(name, itemGet) {
     var addRow = $("<tr><td>" + name + "</td><td>" + score + "</td></tr>");
     var winners = [];
 
     for (var i = 0; i < localStorage.length; i++) {
-      winners[i] = localStorage[i];
+      if ((i % 2) == 0) {
+        winners[i] = name;
+      } else {
+        winners[i] = itemGet;
+      }
     }
     console.log(winners);
   }
 
   //When player one answer buttons are clicked, it will look for
   function buttonClickPlayerOne(){
-    if($(".answerBtns").hasClass("correct")){
-      $(".correct").css("background-color", "green");
+    if($(this).hasClass("correct")){
+      $(".correct").css("background-color", "#00FF0088");
+      $(".incorrect").css("background-color", "#FF000088");
       p1Score++;
       $("#score").html("Score: " + p1Score);
-    } else {
-      $(".incorrect").css("background-color", "red");
+    }
+    else if ($(this).hasClass("incorrect")) {
+      $(".correct").css("background-color", "#00FF0088");
+      $(".incorrect").css("background-color", "#FF000088");
     }
     $(".answerBtns").off("click");
   }
+
   //When player two answer buttons are clicked, it will look for
   function buttonClickPlayerTwo(){
-    if($(".answerBtns2").hasClass("correct")){
-      $(".correct").css("background-color", "green");
-      p1Score++;
-      $("#score").html("Score: " + p1Score);
-    } else {
-      $(".incorrect").css("background-color", "red");
+    if($(this).hasClass("correct")){
+      $(".correct").css("background-color", "#00FF0088");
+      $(".incorrect").css("background-color", "#FF000088");
+      p2Score++;
+      $("#score2").html("Score: " + p2Score);
+    }
+    else if ($(this).hasClass("incorrect")) {
+      $(".correct").css("background-color", "#00FF0088");
+      $(".incorrect").css("background-color", "#FF000088");
     }
     $(".answerBtns2").off("click");
   }
@@ -334,11 +345,12 @@ $(function() {
     $("#questions2").show();
     showQuestionsForPlayerTwo(questions);
   })
-
+  //Store user name in local storage for leaderboard
   $("input[type='submit']").on("click", function(event){
     event.preventDefault();
     var name = $("#nameInput").val();
     if (winner == "1") {
+      debugger;
       localStorage.setItem(name, p1Score);
       createLeaderboard(name, localStorage.getItem(name))
     }
