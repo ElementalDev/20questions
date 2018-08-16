@@ -258,7 +258,7 @@ $(function() {
         }
         $(".answerBtns2").on("click", buttonClickPlayerTwo);
       }
-    }, 1000);
+    }, 5000);
   }
 
   //Get the winner
