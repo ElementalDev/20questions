@@ -1,16 +1,16 @@
 $(function() {
-
   var diff = "";
   var questions = "";
   var p1Score = 0;
   var p2Score = 0;
+  var winner;
 
   //Hide other screens
   $("#questionsScreenP1").hide();
   $("#questionsScreenP2").hide();
   $("#questions1").hide();
   $("#questions2").hide();
-  $("#winnerPanel").show();
+  $("#winnerPanel").hide();
 
   //Get and return the difficulty from the radio buttons
   function getDifficulty() {
@@ -63,8 +63,6 @@ $(function() {
     var correctAnswer = "";
     //Create random numbers to be used for random questions
     var randQues = Math.floor(Math.random() * 50);
-    var randAnswer = Math.floor(Math.random() * 4) + 1;
-    var seenAnswer;
     //Display the first question
     seenQuestions.push(randQues);
     $("#question").html(ques.results[randQues].question)
@@ -84,14 +82,15 @@ $(function() {
       if ($(answerBtns[i]).text() == correctAnswer) {
         $(answerBtns[i]).addClass("correct");
       } else {
-        $(answerBtns[i]).addClass("incorrect")
+        $(answerBtns[i]).addClass("incorrect");
       }
     }
+
+    $(".answerBtns").on("click", buttonClickPlayerOne);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
         //Stop the timer and the questions from changing
-        debugger;
         clearInterval(repeat);
         clearInterval(timer);
         $("#question").html("Finished");
@@ -146,6 +145,7 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
+        $(".answerBtns").on("click", buttonClickPlayerOne);
       }
     }, 5000);
   }
@@ -194,6 +194,7 @@ $(function() {
         $(answerBtns[i]).addClass("incorrect");
       }
     }
+    $(".answerBtns2").on("click", buttonClickPlayerTwo);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
@@ -255,13 +256,13 @@ $(function() {
             $(answerBtns[i]).addClass("incorrect");
           }
         }
+        $(".answerBtns2").on("click", buttonClickPlayerTwo);
       }
-    }, 5000);
+    }, 1000);
   }
 
   //Get the winner
   function getWinner(scoreP1, scoreP2) {
-    var winner;
     if (scoreP1 > scoreP2) {
       $("#announceWinner").html("Player 1 Wins!")
       winner = "1";
@@ -273,11 +274,40 @@ $(function() {
       $("#announceWinner").html("ITS A DRAW!")
       winner = "0";
     }
-    return winner;
   }
 
-  function createLeaderboard() {
-    
+  //Create the leaderboard
+  function createLeaderboard(name, score) {
+    var addRow;
+    var winners = [];
+
+    for (var i = 0; i < itemGet.length; i++) {
+      winners[i] = itemGet;
+      console.log(winners[i]);
+    }
+  }
+
+  //When player one answer buttons are clicked, it will look for
+  function buttonClickPlayerOne(){
+    if($(".answerBtns").hasClass("correct")){
+      $(".correct").css("background-color", "green");
+      p1Score++;
+      $("#score").html("Score: " + p1Score);
+    } else {
+      $(".answerBtns").css("background-color", "red");
+    }
+    $(".answerBtns").off("click");
+  }
+  //When player two answer buttons are clicked, it will look for
+  function buttonClickPlayerTwo(){
+    if($(".answerBtns2").hasClass("correct")){
+      $(".correct").css("background-color", "green");
+      p1Score++;
+      $("#score").html("Score: " + p1Score);
+    } else {
+      $(".answerBtns2").css("background-color", "red");
+    }
+    $(".answerBtns2").off("click");
   }
 
   //When the user clicks the start button
@@ -304,24 +334,17 @@ $(function() {
     $("#questions2").show();
     showQuestionsForPlayerTwo(questions);
   })
-  //When player one answer buttons are clicked, it will look for
-  $(".answerBtns").on("click", function(){
-    if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "green");
-      p1Score++;
-      $("#score").text("Score: " + p1Score);
-    } else {
-      $(this).css("background-color", "red");
+
+  $("input[type='submit']").on("click", function(event){
+    event.preventDefault();
+    var name = $("#nameInput").val();
+    if (winner == "1") {
+      localStorage.setItem(name, p1Score);
+      createLeaderboard(localStorage.getItem(name))
     }
-  })
-  //When player two answer buttons are clicked, it will look for
-  $(".answerBtns2").on("click", function(){
-    if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "green");
-      p2Score++;
-      $("#score2").text("Score: " + p2Score);
-    } else {
-      $(".incorrect").css("background-color", "red");
+    else if (winner == "2") {
+      localStorage.setItem(name, p2Score)
+      createLeaderboard(localStorage.getItem(name))
     }
   })
 })
