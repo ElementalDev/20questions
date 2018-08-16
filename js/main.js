@@ -12,6 +12,7 @@ $(function() {
   $("#questions1").hide();
   $("#questions2").hide();
   $("#winnerPanel").hide();
+  $("#leaderboard").hide();
 
   //Get and return the difficulty from the radio buttons
   function getDifficulty() {
@@ -340,12 +341,15 @@ $(function() {
     var container = $("#leaderboard");
     var keys = Object.getOwnPropertyNames(localStorage);
     var values = [];
-
+    //Show the leaderboard
+    $("#leaderboard").show();
+    //Store the scores
     for (var items in localStorage){
       values.push(localStorage[items]);
     }
-      for (var i = 0; i < keys.length; i++) {
-        container.append("<tr class='entry'><td class='name'>" + keys[i] + "</td><td>" + values[i] + "</td><tr>");
+    //Show the entry
+    for (var i = 0; i < keys.length; i++) {
+      container.append("<tr class='entry'><td class='name'>" + keys[i] + "</td><td>" + values[i] + "</td><tr>");
     }
   }
 
@@ -378,11 +382,13 @@ $(function() {
 
   //Store user name in local storage for leaderboard
   $("input[type='submit']").on("click", function(event){
-    var done = false;
+    //Prevent form from submitting
     event.preventDefault();
     var name = $("#nameInput").val();
     if (winner == "1") {
+      //Store name and score in local storage
       localStorage.setItem(name, p1Score);
+      //Show the leaderboard
       createLeaderboard();
     }
     else if (winner == "2") {
