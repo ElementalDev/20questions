@@ -98,8 +98,6 @@ $(function() {
         //Stop the timer and the questions from changing
         clearInterval(repeat);
         clearInterval(timer);
-        $("#question").html("Finished");
-        $("#timeKeep").html("Time: " + "0");
         //Store the score of player one
         p1Score = $("#score").html();
         $("#questionsScreenP1").hide();
@@ -192,9 +190,11 @@ $(function() {
     for (var i = 0; i < 3; i++) {
       answers.push(ques2.results[randQues].incorrect_answers[i]);
     }
+    //Shuffle the answers
+    shuffledAnswers = shuffleArray(answers);
     //Display the answers
-    for (var i = 0; i < answers.length; i++) {
-      $(answerBtns[i]).html(answers[i]);
+    for (var i = 0; i < shuffledAnswers.length; i++) {
+      $(answerBtns[i]).html(shuffledAnswers[i]);
     }
     //Assign a class to the correct answer button
     for (var i = 0; i < answerBtns.length; i++) {
@@ -255,9 +255,11 @@ $(function() {
         for (var i = 0; i < 3; i++) {
           answers.push(ques2.results[randQues].incorrect_answers[i]);
         }
+        //Shuffle the answers
+        shuffledAnswers = shuffleArray(answers);
         //Display the answers
-        for (var i = 0; i < answers.length; i++) {
-          $(answerBtns[i]).html(answers[i]);
+        for (var i = 0; i < shuffledAnswers.length; i++) {
+          $(answerBtns[i]).html(shuffledAnswers[i]);
         }
         for (var i = 0; i < answerBtns.length; i++) {
           if ($(answerBtns[i]).text() == correctAnswer) {
