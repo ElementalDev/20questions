@@ -278,13 +278,13 @@ $(function() {
 
   //Create the leaderboard
   function createLeaderboard(name, score) {
-    var addRow;
+    var addRow = $("<tr><td>" + name + "</td><td>" + score + "</td></tr>");
     var winners = [];
 
-    for (var i = 0; i < itemGet.length; i++) {
-      winners[i] = itemGet;
-      console.log(winners[i]);
+    for (var i = 0; i < localStorage.length; i++) {
+      winners[i] = localStorage[i];
     }
+    console.log(winners);
   }
 
   //When player one answer buttons are clicked, it will look for
@@ -294,7 +294,7 @@ $(function() {
       p1Score++;
       $("#score").html("Score: " + p1Score);
     } else {
-      $(".answerBtns").css("background-color", "red");
+      $(".incorrect").css("background-color", "red");
     }
     $(".answerBtns").off("click");
   }
@@ -305,7 +305,7 @@ $(function() {
       p1Score++;
       $("#score").html("Score: " + p1Score);
     } else {
-      $(".answerBtns2").css("background-color", "red");
+      $(".incorrect").css("background-color", "red");
     }
     $(".answerBtns2").off("click");
   }
@@ -340,11 +340,11 @@ $(function() {
     var name = $("#nameInput").val();
     if (winner == "1") {
       localStorage.setItem(name, p1Score);
-      createLeaderboard(localStorage.getItem(name))
+      createLeaderboard(name, localStorage.getItem(name))
     }
     else if (winner == "2") {
       localStorage.setItem(name, p2Score)
-      createLeaderboard(localStorage.getItem(name))
+      createLeaderboard(name, localStorage.getItem(name))
     }
   })
 })
