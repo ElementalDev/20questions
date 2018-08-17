@@ -46,6 +46,7 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerOne(ques) {
+    //Array to store shuffled answers
     var shuffledAnswers;
     //Counter to stop changing questions
     var quesNumber = 0;
@@ -162,6 +163,8 @@ $(function() {
 
   //Show the questions
   function showQuestionsForPlayerTwo(ques2) {
+    //Array to store shuffled answers
+    var shuffledAnswers;
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -358,21 +361,20 @@ $(function() {
   $("#startBtn").click(function (){
     diff = getDifficulty();
     questions = getQuestions(diff);
-    if (questions == "") {
-      questions = getQuestions(diff);
-    }
-    $("#titleScreen").hide();
-    $("#questionsScreenP1").show();
+    $.when(getQuestions(diff)).done(function() {
+      $("#titleScreen").hide();
+      $("#questionsScreenP1").show();
+    })
   })
 
-  //When the user clicks the start button
+  //When the user clicks the instructions button
   $("#instructionsBtn").click(function (){
     $("#titleScreen").fadeOut(1000, function() {
       $("#instructionsScreen").fadeIn(1000);
     });
   })
 
-  //When the user clicks the start button
+  //When the user clicks the back button
   $("#backBtn").click(function (){
     $("#instructionsScreen").fadeOut(1000, function() {
       $("#titleScreen").fadeIn(1000);
