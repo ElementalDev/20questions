@@ -276,7 +276,7 @@ $(function() {
         }
       }
       $(answerBtns).on("click", buttonClickPlayerTwo);
-    }, 500);
+    }, 5000);
   }
 
   //Shuffles the array of answers
