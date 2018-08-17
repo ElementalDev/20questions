@@ -3,13 +3,13 @@
 This is a game project that I completed whilst following the Agile ceremonies, in a timeframe of 1 week with 2 sprints, a review, a retrospective and a lookahead.
 
 ## Requirements
-- Must have Market Viable Product by the end of both sprints.
-- Must have an instructions screen.
-- Must be 2 player
-- Must be well styled
-- Must be hosted online
-- Must have a leaderBoard
-- Must display if the player has won or scores at the end of the game
+- [x] Must have Market Viable Product by the end of both sprints.
+- [x] Must have an instructions screen.
+- [x] Must be 2 player
+- [x] Must be well styled
+- [x] Must be hosted online
+- [x] Must have a leaderBoard
+- [x] Must display if the player has won or scores at the end of the game
 
 ## Content
 
@@ -59,8 +59,10 @@ After player 2 has completed their turn, a screen shows with an announcement of 
 
 ![title screen](images/winnerscreen.png)
 
-Once the user has inputted their name, they can click the button and it will take them to the leaderBoard
+Once the user has inputted their name, they can click the button and it will take them to the leaderboard.
 
 ### The leaderboard
 
-This screen shows all of the previous players and scores, in order to invoke competition between users, in turn, increasing playability
+This screen shows all of the previous players and scores, in order to invoke competition between users, in turn, increasing playability.
+
+![title screen](images/leaderboard.png)

@@ -111,6 +111,7 @@ input[type="submit"] {
 #leaderboard {
   border: 1px solid black;
   margin: auto;
+  margin-top: 50px;
   width: 500px;
   text-align: center;
   font-size: 30px;
@@ -122,13 +123,13 @@ input[type="submit"] {
 }
 
 .name {
-  border: 1px solid black;
+  border: 3px solid black;
   padding-left: 20px;
   text-align: left;
 }
 
 .entry {
-  border: 1px solid black;
+  border: 3px solid black;
 }
 
 /* Animations */
