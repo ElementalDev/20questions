@@ -3,6 +3,7 @@ $(function() {
   //Audio
   var correctAudio = new Audio("sounds/correct.mp3");
   var incorrectAudio = new Audio("sounds/incorrect.mp3");
+  var backAudio = new Audio("sounds/LoungeLizard.mp3");
   //Store difficulty
   var diff = "";
   //Store API questions
@@ -32,6 +33,13 @@ $(function() {
   $("#leaderboard").hide();
   //When the user clicks the start button
   $("#startBtn").click(function (){
+    backAudio.addEventListener('ended', function() {
+      //When music ends, put the current time back to 0
+      this.currentTime = 0;
+      //Play again
+      this.play();
+    }, false);
+    backAudio.play();
     diff = getDifficulty();
     //If the user selects a difficulty
     if (diff != undefined) {
