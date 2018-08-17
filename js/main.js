@@ -221,9 +221,10 @@ $(function() {
         //Store the score of player two
         p2Score = $("#score2").html();
         //Hide the questions screen
-        $("#questionsScreenP2").hide();
-        //Show the winners panel
-        $("#winnerPanel").show();
+        $("#questionsScreenP2").fadeOut(1000, function(){
+          //Show the winners panel
+          $("#winnerPanel").show();
+        });
         //Show the winner of the round
         getWinner(p1Score, p2Score);
       } else {
@@ -346,7 +347,9 @@ $(function() {
     var keys = Object.getOwnPropertyNames(localStorage);
     var values = [];
     //Show the leaderboard
-    $("#leaderboard").show();
+    $("#winnerPanel").fadeOut(1000, function() {
+      $("#leaderboard").fadeIn(1000);
+    });
     //Store the scores
     for (var items in localStorage){
       values.push(localStorage[items]);
@@ -361,10 +364,15 @@ $(function() {
   $("#startBtn").click(function (){
     diff = getDifficulty();
     questions = getQuestions(diff);
-    $.when(getQuestions(diff)).done(function() {
-      $("#titleScreen").hide();
-      $("#questionsScreenP1").show();
-    })
+    if (diff != undefined) {
+      $.when(getQuestions(diff)).done(function() {
+        $("#titleScreen").fadeOut(1000, function() {
+          $("#questionsScreenP1").fadeIn(1000);
+        })
+      })
+    } else {
+      $("#title").html("Please choose a difficulty.");
+    }
   })
 
   //When the user clicks the instructions button
