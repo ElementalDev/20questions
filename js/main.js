@@ -318,7 +318,7 @@ $(function() {
     ;
     if($(this).hasClass("correct")){
       $(".correct").css("background-color", "#00FF0088");
-      p1Score++;
+      p1Score = p1Score + 10;
       $("#score").html("Score: " + p1Score);
     }
     else if ($(this).hasClass("incorrect")) {
@@ -332,7 +332,7 @@ $(function() {
     if($(this).hasClass("correct")){
       $(".correct").css("background-color", "#00FF0088");
       $(".incorrect").css("background-color", "#FF000088");
-      p2Score++;
+      p2Score = p2Score + 10;
       $("#score2").html("Score: " + p2Score);
     }
     else if ($(this).hasClass("incorrect")) {
