@@ -314,7 +314,8 @@ $(function() {
     for (var items in localStorage){
       values.push(localStorage[items]);
     }
-      for (var i = 0; i < keys.length; i++) {
+    
+    for (var i = 0; i < keys.length; i++) {
         container.append("<tr class='entry'><td class='name'>" + keys[i] + "</td><td>" + values[i] + "</td><tr>");
     }
   }
