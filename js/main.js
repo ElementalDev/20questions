@@ -175,7 +175,7 @@ $(function() {
         time = 5;
       }
       $("#timeKeep2").html("Time: " + time);
-    }, 500);
+    }, 1000);
     var answerBtns = $(".answerBtns2");
     //Array for answers
     var answers = [];
@@ -363,9 +363,9 @@ $(function() {
   //When the user clicks the start button
   $("#startBtn").click(function (){
     diff = getDifficulty();
-    questions = getQuestions(diff);
     if (diff != undefined) {
       $.when(getQuestions(diff)).done(function() {
+        questions = getQuestions(diff);
         $("#titleScreen").fadeOut(1000, function() {
           $("#questionsScreenP1").fadeIn(1000);
         })
