@@ -60,6 +60,7 @@ $(function() {
   })
   //When Player 1 wants to start a question round
   $("#startQues").click(function(){
+    answers = [];
     $(this).hide();
     $("#playerTitle1").hide();
     $("#questions1").show();
@@ -67,6 +68,7 @@ $(function() {
   })
   //When Player 2 wants to start a question round
   $("#startQues2").click(function(){
+    answers = [];
     $(this).hide();
     $("#playerTitle2").hide();
     $("#questions2").show();
@@ -239,7 +241,7 @@ $(function() {
     }
     seenQuestions2.push(randQues);
     //Display the first question
-    $("#question").html(ques2.results[randQues].question)
+    $("#question2").html(ques2.results[randQues].question)
     //Store the answers
     answers.push(ques2.results[randQues].correct_answer);
     //Store the correct answer
@@ -327,7 +329,7 @@ $(function() {
       if (time < 1){
         time = 5;
       }
-      $("#timeKeep").html("Time: " + time);
+      $("#timeKeep2").html("Time: " + time);
     }, 1000);
     //Display the questions
     displayQuestionsP2(ques);
@@ -341,6 +343,8 @@ $(function() {
         $("#timeKeep2").html("Time: " + "0");
         //Store the score of player two
         p2Score = $("#score2").html();
+        //Get who the winner is
+        getWinner(p1Score, p2Score);
         //Hide the questions screen
         $("#questionsScreenP2").fadeOut(1000, function(){
           //Show the winners panel
