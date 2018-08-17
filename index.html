@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Main JS -->
     <script src="js/main.js" charset="utf-8"></script>
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <title>QDA Quiz</title>
+    <title>20 Questions</title>
   </head>
   <body>
     <!-- Title screen -->
     <div id="titleScreen" class="container-flex">
-      <h1 id="title">QDA Quiz</h1>
+      <h1 id="title">20 Questions - Who's the best?</h1>
       <form class="difficultyForm" action="index.html" method="post">
+        <!-- Form that allows the user to choose their difficulty -->
         <h2>Difficulty</h2>
+        <!-- Radio button for easy -->
         <label for="easy">Easy</label>
         <input id="easy" class="diffBtns" type="radio" name="difficulty" value="easy">
+        <!-- Radio button for medium -->
         <label for="medium">Medium</label>
         <input id="medium" class="diffBtns" type="radio" name="difficulty" value="medium">
+        <!-- Radio button for hard -->
         <label for="hard">Hard</label>
         <input id="hard" class="diffBtns" type="radio" name="difficulty" value="hard">
       </form>
+      <!-- Button to start the game -->
       <button id="startBtn" type="button" name="button">Start</button>
+      <!-- Button to show instructions -->
+      <button id="instructionsBtn" type="button" name="button">Instructions</button>
+    </div>
+    <!-- Instructions screen -->
+    <div id="instructionsScreen" class="container">
+      <h1>Ready to test your knowledge?</h1>
+      <label for="rulesList">Here are the rules:</label>
+      <!-- Show the user the rules -->
+      <ul id="rulesList">
+        <li>It's a 2 Player game</li>
+        <li>You have 5 seconds for each question</li>
+        <li>10 points for each question correct</li>
+        <li>Once the first player has completed his turn, he must then pass the computer to the next player</li>
+        <li>You cannot choose more than 1 answer. Once youve picked, thats it!</li>
+        <li>The player who gets the most points, wins the round</li>
+      </ul>
+      <h2>Have fun!</h2>
+      <!-- Back button -->
+      <button id="backBtn" type="button" name="button">Back</button>
     </div>
     <!-- Player 1 screen -->
     <div id="questionsScreenP1" class="container-flex">
@@ -85,15 +114,20 @@
     </div>
     <!-- Displays the winner -->
     <div id="winnerPanel" class="container">
+      <!-- Header for announcing the winner -->
       <h2 id="announceWinner"></h2>
+      <!-- Form for name in leaderboard -->
       <form id="nameForm" action="" method="post">
         <input id="nameInput" type="text" name="" value="" placeholder="Enter Your Name...">
+        <!-- Take the user to the leaderboard -->
         <input type="submit" value="To the leaderboard!">
       </form>
-      <table id="leaderboard">
-        <tr id="leaderBoardTitle">
-          <td colspan="2">Leaderboard</td>
-        </tr>
+    </div>
+    <!-- Show the leaderboard -->
+    <table id="leaderboard">
+      <tr id="leaderBoardTitle">
+        <td colspan="2">Leaderboard</td>
+      </tr>
     </table>
   </body>
 </html>
