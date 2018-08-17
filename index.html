@@ -3,11 +3,15 @@
   <head>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Main JS -->
     <script src="js/main.js" charset="utf-8"></script>
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <title>20 Questions</title>
   </head>
@@ -47,6 +51,7 @@
         <li>The player who gets the most points, wins the round</li>
       </ul>
       <h2>Have fun!</h2>
+      <!-- Back button -->
       <button id="backBtn" type="button" name="button">Back</button>
     </div>
     <!-- Player 1 screen -->
@@ -74,10 +79,10 @@
             <button class="answerBtns" id="answer2" type="button" name="button"></button>
             <button class="answerBtns" id="answer3" type="button" name="button"></button>
             <button class="answerBtns" id="answer4" type="button" name="button"></button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     <!-- Player 2 screen -->
     <div id="questionsScreenP2" class="container-flex">
       <div class="container">
@@ -103,18 +108,22 @@
             <button class="answerBtns2" id="answer2" type="button" name="button"></button>
             <button class="answerBtns2" id="answer3" type="button" name="button"></button>
             <button class="answerBtns2" id="answer4" type="button" name="button"></button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     <!-- Displays the winner -->
     <div id="winnerPanel" class="container">
+      <!-- Header for announcing the winner -->
       <h2 id="announceWinner"></h2>
+      <!-- Form for name in leaderboard -->
       <form id="nameForm" action="" method="post">
         <input id="nameInput" type="text" name="" value="" placeholder="Enter Your Name...">
+        <!-- Take the user to the leaderboard -->
         <input type="submit" value="To the leaderboard!">
       </form>
     </div>
+    <!-- Show the leaderboard -->
     <table id="leaderboard">
       <tr id="leaderBoardTitle">
         <td colspan="2">Leaderboard</td>
