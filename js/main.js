@@ -7,6 +7,7 @@ $(function() {
   var winner;
 
   //Hide other screens
+  $("#instructionsScreen").hide();
   $("#questionsScreenP1").hide();
   $("#questionsScreenP2").hide();
   $("#questions1").hide();
@@ -362,6 +363,20 @@ $(function() {
     }
     $("#titleScreen").hide();
     $("#questionsScreenP1").show();
+  })
+
+  //When the user clicks the start button
+  $("#instructionsBtn").click(function (){
+    $("#titleScreen").fadeOut(1000, function() {
+      $("#instructionsScreen").fadeIn(1000);
+    });
+  })
+
+  //When the user clicks the start button
+  $("#backBtn").click(function (){
+    $("#instructionsScreen").fadeOut(1000, function() {
+      $("#titleScreen").fadeIn(1000);
+    });
   })
 
   //When Player 1 wants to start a question round

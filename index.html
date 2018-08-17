@@ -8,22 +8,45 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>QDA Quiz</title>
+    <title>20 Questions</title>
   </head>
   <body>
     <!-- Title screen -->
     <div id="titleScreen" class="container-flex">
-      <h1 id="title">QDA Quiz</h1>
+      <h1 id="title">20 Questions - Who's the best?</h1>
       <form class="difficultyForm" action="index.html" method="post">
+        <!-- Form that allows the user to choose their difficulty -->
         <h2>Difficulty</h2>
+        <!-- Radio button for easy -->
         <label for="easy">Easy</label>
         <input id="easy" class="diffBtns" type="radio" name="difficulty" value="easy">
+        <!-- Radio button for medium -->
         <label for="medium">Medium</label>
         <input id="medium" class="diffBtns" type="radio" name="difficulty" value="medium">
+        <!-- Radio button for hard -->
         <label for="hard">Hard</label>
         <input id="hard" class="diffBtns" type="radio" name="difficulty" value="hard">
       </form>
+      <!-- Button to start the game -->
       <button id="startBtn" type="button" name="button">Start</button>
+      <!-- Button to show instructions -->
+      <button id="instructionsBtn" type="button" name="button">Instructions</button>
+    </div>
+    <!-- Instructions screen -->
+    <div id="instructionsScreen" class="container">
+      <h1>Ready to test your knowledge?</h1>
+      <label for="rulesList">Here are the rules:</label>
+      <!-- Show the user the rules -->
+      <ul id="rulesList">
+        <li>It's a 2 Player game</li>
+        <li>You have 5 seconds for each question</li>
+        <li>10 points for each question correct</li>
+        <li>Once the first player has completed his turn, he must then pass the computer to the next player</li>
+        <li>You cannot choose more than 1 answer. Once youve picked, thats it!</li>
+        <li>The player who gets the most points, wins the round</li>
+      </ul>
+      <h2>Have fun!</h2>
+      <button id="backBtn" type="button" name="button">Back</button>
     </div>
     <!-- Player 1 screen -->
     <div id="questionsScreenP1" class="container-flex">
