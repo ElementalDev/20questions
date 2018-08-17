@@ -1,5 +1,8 @@
 $(function() {
   //Master
+  //Audio
+  var correct = $(".audioCorrect");
+  var incorrect = $(".audioIncorrect");
   //Store difficulty
   var diff = "";
   //Store API questions
