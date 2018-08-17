@@ -2,6 +2,14 @@
 
 This is a game project that I completed whilst following the Agile ceremonies, in a timeframe of 1 week with 2 sprints, a review, a retrospective and a lookahead.
 
+## Implementation languages
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Bootstrap
+
 ## Requirements
 - [x] Must have Market Viable Product by the end of both sprints.
 - [x] Must have an instructions screen.
