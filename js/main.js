@@ -254,7 +254,7 @@ $(function() {
       $("#score").html("Score: " + p1Score);
     }
     else if ($(this).hasClass("incorrect")) {
-      $(this).css("background-color", "#FF000088");
+      $(this).css("background-color", "#FF0000");
       incorrectAudio.play();
     }
     $(".answerBtns").off("click");
@@ -327,7 +327,7 @@ $(function() {
       $("#score2").html("Score: " + p2Score);
     }
     else if ($(this).hasClass("incorrect")) {
-      $(this).css("background-color", "#FF000088");
+      $(this).css("background-color", "#FF0000");
       incorrectAns.play();
     }
     $(".answerBtns2").off("click");
