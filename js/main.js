@@ -31,6 +31,7 @@ $(function() {
   $("#questions2").hide();
   $("#winnerPanel").hide();
   $("#leaderboard").hide();
+  $("#refreshBtn").hide();
   //Backing music
   backAudio.addEventListener('ended', function() {
     //When music ends, put the current time back to 0
@@ -403,6 +404,7 @@ $(function() {
     //Show the leaderboard
     $("#winnerPanel").fadeOut(1000, function() {
       $("#leaderboard").fadeIn(1000);
+      $("#refreshBtn").show();
     });
     //Store the scores
     for (var items in localStorage){
