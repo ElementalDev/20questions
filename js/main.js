@@ -102,6 +102,11 @@ $(function() {
       createLeaderboard()
     }
   })
+  //Refresh button
+  $("#refreshBtn").on("click", function(){
+    //Refresh the page to start again
+    location.reload();
+  })
   //Master functions
   //Get the difficulty the user selected
   function getDifficulty() {
