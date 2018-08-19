@@ -10,14 +10,14 @@ h2 {
   text-align: center;
 }
 
-/* Title page styles */
-
-#title {
-  animation: breathing 15s infinite;
+.title {
+  animation: breathing 10s infinite;
   text-align: center;
   font-size: 90px;
   margin-top: 150px;
 }
+
+/* Title page styles */
 
 button {
   display: block;
@@ -43,9 +43,15 @@ button:hover {
   margin-right: 10px;
 }
 
+/* Instructions style */
+
+#rulesList {
+  margin: auto;
+}
+
 /* Questions styles */
 
-#question, #question2 {
+.questions {
   margin: auto;
   margin-top: 50px;
 }
@@ -54,7 +60,7 @@ button:hover {
   font-size: 60px;
 }
 
-#score, #timeKeep, #score2, #timeKeep2 {
+.headerRecorders {
   font-size: 60px;
   padding: 10px;
   text-align: center;

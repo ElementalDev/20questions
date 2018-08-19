@@ -18,7 +18,7 @@
   <body>
     <!-- Title screen -->
     <div id="titleScreen" class="container-flex">
-      <h1 id="title">20 Questions - Who's the best?</h1>
+      <h1 id="title" class="title">20 Questions - Who's the best?</h1>
       <form class="difficultyForm" action="index.html" method="post">
         <!-- Form that allows the user to choose their difficulty -->
         <h2>Difficulty</h2>
@@ -39,13 +39,15 @@
     </div>
     <!-- Instructions screen -->
     <div id="instructionsScreen" class="container">
-      <h1>Ready to test your knowledge?</h1>
+      <h1 class="title">Ready to test your knowledge?</h1>
       <label for="rulesList">Here are the rules:</label>
       <!-- Show the user the rules -->
       <ul id="rulesList">
         <li>It's a 2 Player game</li>
+        <li>Select your difficulty</li>
         <li>You have 5 seconds for each question</li>
         <li>10 points for each question correct</li>
+        <li>If you miss a question, you could get the points from that question if you get the next one right</li>
         <li>Once the first player has completed his turn, he must then pass the computer to the next player</li>
         <li>You cannot choose more than 1 answer. Once youve picked, thats it!</li>
         <li>The player who gets the most points, wins the round</li>
@@ -60,17 +62,17 @@
         <!-- Screen header -->
         <div class="row">
           <div  id="roundTitle" class="col-sm-4">Round 1</div>
-          <div id="score" class="col-sm-4">Score: 0</div>
-          <div id="timeKeep" class="col-sm-4">Time: 0</div>
+          <div id="score" class="col-sm-4 headerRecorders">Score: 0</div>
+          <div id="timeKeep" class="col-sm-4 headerRecorders">Time: 0</div>
         </div>
       </div>
       <!-- Start button -->
-      <h2 id="playerTitle1">Player 1 Start</h2>
+      <h2 id="playerTitle1" class="title">Player 1 Start</h2>
       <button id="startQues" type="button" name="button">Start the game</button>
-      <div id="questions1" class="container">
+      <div id="questions1" class="container ">
         <!-- Question -->
         <div class="row">
-          <h2 id="question">Question:</h2>
+          <h2 id="question" class="questions">Question:</h2>
         </div>
         <div class="row">
           <!-- Answer buttons -->
@@ -88,18 +90,18 @@
       <div class="container">
         <!-- Screen header -->
         <div class="row">
-          <div  id="roundTitle" class="col-sm-4">Round 1</div>
-          <div id="score2" class="col-sm-4">Score: 0</div>
-          <div id="timeKeep2" class="col-sm-4">Time: 0</div>
+          <div  id="roundTitle" class="col-sm-4">Round 2</div>
+          <div id="score2" class="col-sm-4 headerRecorders">Score: 0</div>
+          <div id="timeKeep2" class="col-sm-4 headerRecorders">Time: 0</div>
         </div>
       </div>
       <!-- Start Button -->
-      <h2 id="playerTitle2">Player 2 Start</h2>
+      <h2 id="playerTitle2" class="title">Player 2 Start</h2>
       <button id="startQues2" type="button" name="button">Start the game</button>
       <div id="questions2" class="container">
         <!-- Question -->
         <div class="row">
-          <h2 id="question2">Question</h2>
+          <h2 id="question2" class="questions">Question</h2>
         </div>
         <div class="row">
           <!-- Answer buttons -->
