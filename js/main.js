@@ -247,7 +247,6 @@ $(function() {
         clearInterval(repeat);
         clearInterval(timer);
         //Store the score of player one
-        p1Score = $("#score").html();
         $("#questionsScreenP1").hide();
         $("#questions1").hide();
         $("#questionsScreenP2").show();
@@ -375,6 +374,7 @@ $(function() {
   //End Game
   //Get the winner
   function getWinner(scoreP1, scoreP2) {
+    debugger;
     //If player 1 scored less than player 2
     if (scoreP1 > scoreP2) {
       $("#announceWinner").html("Player 1 Wins!")
