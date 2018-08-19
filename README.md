@@ -30,7 +30,7 @@ This is the screen that the user starts at, where they can choose to start the g
 
 If the user does not choose a difficulty, then they are met with this:
 
-![title screen](images/nodiff.png)
+![no difficulty](images/nodifficulty.png)
 
 The user cannot proceed without choosing a difficulty.
 
