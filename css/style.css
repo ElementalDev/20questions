@@ -2,6 +2,8 @@
 
 body {
   font-family: Ubuntu, sans-serif;
+  background-image: url("../images/background.png");
+  background-size: cover;
   animation: bgcolor 10s infinite;
   color: white;
 }
