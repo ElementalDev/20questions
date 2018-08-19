@@ -1,4 +1,4 @@
-# QDA Quiz
+# 20 Questions - Who's the best?
 
 This is a game project that I completed whilst following the Agile ceremonies, in a timeframe of 1 week with 2 sprints, a review, a retrospective and a lookahead.
 
@@ -9,6 +9,7 @@ This is a game project that I completed whilst following the Agile ceremonies, i
 - JavaScript
 - jQuery
 - Bootstrap
+- Ajax
 
 ## Requirements
 - [x] Must have Market Viable Product by the end of both sprints.
