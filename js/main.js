@@ -319,7 +319,7 @@ $(function() {
     answers = [];
   }
   //When player two answer buttons are clicked, it will look for
-  function buttonClickPlayerTwo(){
+  function buttonClickPlayerTwo() {
     if($(this).hasClass("correct")){
       $(".correct").css("background-color", "#00FF00");
       correctAudio.play();
@@ -347,7 +347,7 @@ $(function() {
     }, 1000);
     //Display the questions
     displayQuestionsP2(ques);
-    $(answerBtns2).on("click", buttonClickPlayerOne);
+    $(answerBtns2).on("click", buttonClickPlayerTwo);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
@@ -356,8 +356,6 @@ $(function() {
         clearInterval(timer);
         $("#question2").html("Finished");
         $("#timeKeep2").html("Time: " + "0");
-        //Store the score of player two
-        p2Score = $("#score2").html();
         //Get who the winner is
         getWinner(p1Score, p2Score);
         //Hide the questions screen
@@ -371,7 +369,7 @@ $(function() {
       quesNumber++;
       //Display the questions
       displayQuestionsP2(ques);
-      $(answerBtns).on("click", buttonClickPlayerOne);
+      $(answerBtns2).on("click", buttonClickPlayerTwo);
     }, 5000);
   }
   //End Game
