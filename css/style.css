@@ -47,8 +47,19 @@ button:hover {
 
 /* Instructions style */
 
+.instTitle {
+  animation: breathing 10s infinite;
+  text-align: center;
+  font-size: 90px;
+}
+
 #rulesList {
-  margin: auto;
+  font-size: 25px;
+}
+
+label[for="rulesList"] {
+  font-size: 30px;
+  text-decoration: underline;
 }
 
 /* Questions styles */
