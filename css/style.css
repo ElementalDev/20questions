@@ -4,7 +4,7 @@ body {
   font-family: Ubuntu, sans-serif;
   background-image: url("../images/background.png");
   background-size: cover;
-  animation: bgcolor 10s infinite;
+  animation: bgcolor 50s infinite;
   color: white;
 }
 
@@ -149,9 +149,14 @@ input[type="submit"] {
 }
 
 @keyframes bgcolor {
-  0% { background-color: #00C5CD; }
-  25% { background-color: #8DB6CD; }
-  50% { background-color: #67C8FF; }
-  75% { background-color: #5CACEE; }
-  100% { background-color: #00C5CD; }
+  0% { background-color: #00CCFF; }
+  10% { background-color: #00FFCC; }
+  20% { background-color: #66FF66; }
+  30% { background-color: #CCFF66; }
+  40% { background-color: #FFFF00; }
+  60% { background-color: #FF9933; }
+  70% { background-color: #FF6600; }
+  80% { background-color: #FF66CC; }
+  90% { background-color: #9999FF; }
+  100% { background-color: #00CCFF; }
 }

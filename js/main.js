@@ -213,7 +213,7 @@ $(function() {
   //When player one answer buttons are clicked, it will look for
   function buttonClickPlayerOne(){
     if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "#00FF0088");
+      $(".correct").css("background-color", "#00FF00");
       correctAudio.play();
       p1Score = p1Score + 10;
       $("#score").html("Score: " + p1Score);
@@ -321,7 +321,7 @@ $(function() {
   //When player two answer buttons are clicked, it will look for
   function buttonClickPlayerTwo(){
     if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "#00FF0088");
+      $(".correct").css("background-color", "#00FF00");
       correctAudio.play();
       p2Score = p2Score + 10;
       $("#score2").html("Score: " + p2Score);
@@ -330,7 +330,7 @@ $(function() {
       $(this).css("background-color", "#FF0000");
       incorrectAudio.play();
     }
-    $(".answerBtns2").off("click");
+    $(answerBtns2).off("click");
   }
   //Show the questions
   function mainP2(ques) {
