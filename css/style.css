@@ -2,7 +2,9 @@
 
 body {
   font-family: Ubuntu, sans-serif;
-  animation: bgcolor 10s infinite;
+  background-image: url("../images/background.png");
+  background-size: cover;
+  animation: bgcolor 50s infinite;
   color: white;
 }
 
@@ -10,14 +12,14 @@ h2 {
   text-align: center;
 }
 
-/* Title page styles */
-
-#title {
-  animation: breathing 15s infinite;
+.title {
+  animation: breathing 10s infinite;
   text-align: center;
   font-size: 90px;
   margin-top: 150px;
 }
+
+/* Title page styles */
 
 button {
   display: block;
@@ -43,9 +45,26 @@ button:hover {
   margin-right: 10px;
 }
 
+/* Instructions style */
+
+.instTitle {
+  animation: breathing 10s infinite;
+  text-align: center;
+  font-size: 90px;
+}
+
+#rulesList {
+  font-size: 25px;
+}
+
+label[for="rulesList"] {
+  font-size: 30px;
+  text-decoration: underline;
+}
+
 /* Questions styles */
 
-#question, #question2 {
+.questions {
   margin: auto;
   margin-top: 50px;
 }
@@ -54,7 +73,7 @@ button:hover {
   font-size: 60px;
 }
 
-#score, #timeKeep, #score2, #timeKeep2 {
+.headerRecorders {
   font-size: 60px;
   padding: 10px;
   text-align: center;
@@ -141,9 +160,14 @@ input[type="submit"] {
 }
 
 @keyframes bgcolor {
-  0% { background-color: #00C5CD; }
-  25% { background-color: #8DB6CD; }
-  50% { background-color: #67C8FF; }
-  75% { background-color: #5CACEE; }
-  100% { background-color: #00C5CD; }
+  0% { background-color: #00CCFF; }
+  10% { background-color: #00FFCC; }
+  20% { background-color: #66FF66; }
+  30% { background-color: #CCFF66; }
+  40% { background-color: #FFFF00; }
+  60% { background-color: #FF9933; }
+  70% { background-color: #FF6600; }
+  80% { background-color: #FF66CC; }
+  90% { background-color: #9999FF; }
+  100% { background-color: #00CCFF; }
 }

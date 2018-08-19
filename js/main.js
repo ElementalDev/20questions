@@ -31,15 +31,16 @@ $(function() {
   $("#questions2").hide();
   $("#winnerPanel").hide();
   $("#leaderboard").hide();
+  //Backing music
+  backAudio.addEventListener('ended', function() {
+    //When music ends, put the current time back to 0
+    this.currentTime = 0;
+    //Play again
+    this.play();
+  }, false);
+  backAudio.play();
   //When the user clicks the start button
   $("#startBtn").click(function (){
-    backAudio.addEventListener('ended', function() {
-      //When music ends, put the current time back to 0
-      this.currentTime = 0;
-      //Play again
-      this.play();
-    }, false);
-    backAudio.play();
     diff = getDifficulty();
     //If the user selects a difficulty
     if (diff != undefined) {
@@ -75,7 +76,7 @@ $(function() {
     $(this).hide();
     $("#playerTitle1").hide();
     $("#questions1").show();
-    questionsP1(questions);
+    mainP1(questions);
   })
   //When Player 2 wants to start a question round
   $("#startQues2").click(function(){
@@ -83,7 +84,7 @@ $(function() {
     $(this).hide();
     $("#playerTitle2").hide();
     $("#questions2").show();
-    questionsP2(questions);
+    mainP2(questions);
   })
   //Store user name in local storage for leaderboard
   $("input[type='submit']").on("click", function(event){
@@ -192,42 +193,6 @@ $(function() {
         $(answerBtns[i]).addClass("incorrect");
       }
     }
-    $(answerBtns).on("click", buttonClickPlayerOne);
-  }
-  //Show the questions
-  function questionsP1(ques) {
-    //Counter to stop changing questions
-    var quesNumber = 0;
-    //Timer
-    var time = 5;
-    var timer = setInterval(function(){
-      time--;
-      if (time < 1){
-        time = 5;
-      }
-      $("#timeKeep").html("Time: " + time);
-    }, 1000);
-    //Display the questions
-    displayQuestionsP1(ques);
-    // Do this function every 5 seconds
-    var repeat = setInterval(function() {
-      if (quesNumber == 19) {
-        //Stop the timer and the questions from changing
-        clearInterval(repeat);
-        clearInterval(timer);
-        //Store the score of player one
-        p1Score = $("#score").html();
-        $("#questionsScreenP1").hide();
-        $("#questions1").hide();
-        $("#questionsScreenP2").show();
-      } else {
-          clearVariablesP1();
-        }
-      quesNumber++;
-      //Display the questions
-      displayQuestionsP1(ques);
-      $(answerBtns).on("click", buttonClickPlayerOne);
-    }, 5000);
   }
   //Clear the variables for player 1
   function clearVariablesP1() {
@@ -248,9 +213,9 @@ $(function() {
   //When player one answer buttons are clicked, it will look for
   function buttonClickPlayerOne(){
     if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "#00FF0088");
+      $(".correct").css("background-color", "#00FF00");
       correctAudio.play();
-      p1Score = p1Score + 5;
+      p1Score = p1Score + 10;
       $("#score").html("Score: " + p1Score);
     }
     else if ($(this).hasClass("incorrect")) {
@@ -259,9 +224,45 @@ $(function() {
     }
     $(".answerBtns").off("click");
   }
+  //Show the questions
+  function mainP1(ques) {
+    //Counter to stop changing questions
+    var quesNumber = 0;
+    //Timer
+    var time = 5;
+    var timer = setInterval(function(){
+      time--;
+      if (time < 1){
+        time = 5;
+      }
+      $("#timeKeep").html("Time: " + time);
+    }, 1000);
+    //Display the questions
+    displayQuestionsP1(ques);
+    $(answerBtns).on("click", buttonClickPlayerOne);
+    // Do this function every 5 seconds
+    var repeat = setInterval(function() {
+      if (quesNumber == 19) {
+        //Stop the timer and the questions from changing
+        clearInterval(repeat);
+        clearInterval(timer);
+        //Store the score of player one
+        p1Score = $("#score").html();
+        $("#questionsScreenP1").hide();
+        $("#questions1").hide();
+        $("#questionsScreenP2").show();
+      } else {
+          clearVariablesP1();
+        }
+      quesNumber++;
+      //Display the questions
+      displayQuestionsP1(ques);
+      $(answerBtns).on("click", buttonClickPlayerOne);
+    }, 5000);
+  }
   //Player 2
   //Display questions for player 2
-  function displayQuestionsP2(ques2) {
+  function displayQuestionsP2(ques) {
     //Array to store shuffled answers
     var shuffledAnswers;
     //Variable for correct answer
@@ -276,13 +277,13 @@ $(function() {
     }
     seenQuestions2.push(randQues);
     //Display the first question
-    $("#question2").html(ques2.results[randQues].question)
+    $("#question2").html(ques.results[randQues].question)
     //Store the answers
-    answers.push(ques2.results[randQues].correct_answer);
+    answers.push(ques.results[randQues].correct_answer);
     //Store the correct answer
     correctAnswer = answers[0];
     for (var i = 0; i < 3; i++) {
-      answers.push(ques2.results[randQues].incorrect_answers[i]);
+      answers.push(ques.results[randQues].incorrect_answers[i]);
     }
     //Shuffle the answers
     shuffledAnswers = shuffleArray(answers);
@@ -300,7 +301,6 @@ $(function() {
         $(answerBtns2[i]).addClass("incorrect");
       }
     }
-    $(answerBtns2).on("click", buttonClickPlayerOne);
   }
   //Clear the variables for player 2
   function clearVariablesP2() {
@@ -319,21 +319,21 @@ $(function() {
     answers = [];
   }
   //When player two answer buttons are clicked, it will look for
-  function buttonClickPlayerTwo(){
+  function buttonClickPlayerTwo() {
     if($(this).hasClass("correct")){
-      $(".correct").css("background-color", "#00FF0088");
-      correctAns.play();
-      p2Score = p2Score + 5;
+      $(".correct").css("background-color", "#00FF00");
+      correctAudio.play();
+      p2Score = p2Score + 10;
       $("#score2").html("Score: " + p2Score);
     }
     else if ($(this).hasClass("incorrect")) {
       $(this).css("background-color", "#FF0000");
-      incorrectAns.play();
+      incorrectAudio.play();
     }
-    $(".answerBtns2").off("click");
+    $(answerBtns2).off("click");
   }
   //Show the questions
-  function questionsP2(ques) {
+  function mainP2(ques) {
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
@@ -347,6 +347,7 @@ $(function() {
     }, 1000);
     //Display the questions
     displayQuestionsP2(ques);
+    $(answerBtns2).on("click", buttonClickPlayerTwo);
     // Do this function every 5 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
@@ -355,8 +356,6 @@ $(function() {
         clearInterval(timer);
         $("#question2").html("Finished");
         $("#timeKeep2").html("Time: " + "0");
-        //Store the score of player two
-        p2Score = $("#score2").html();
         //Get who the winner is
         getWinner(p1Score, p2Score);
         //Hide the questions screen
@@ -370,7 +369,7 @@ $(function() {
       quesNumber++;
       //Display the questions
       displayQuestionsP2(ques);
-      $(answerBtns).on("click", buttonClickPlayerOne);
+      $(answerBtns2).on("click", buttonClickPlayerTwo);
     }, 5000);
   }
   //End Game
