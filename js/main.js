@@ -31,6 +31,7 @@ $(function() {
   $("#questions2").hide();
   $("#winnerPanel").hide();
   $("#leaderboard").hide();
+  $("#refreshBtn").hide();
   //Backing music
   backAudio.addEventListener('ended', function() {
     //When music ends, put the current time back to 0
@@ -101,6 +102,11 @@ $(function() {
       localStorage.setItem(name, p2Score)
       createLeaderboard()
     }
+  })
+  //Refresh button
+  $("#refreshBtn").on("click", function(){
+    //Refresh the page to start again
+    location.reload();
   })
   //Master functions
   //Get the difficulty the user selected
@@ -247,7 +253,6 @@ $(function() {
         clearInterval(repeat);
         clearInterval(timer);
         //Store the score of player one
-        p1Score = $("#score").html();
         $("#questionsScreenP1").hide();
         $("#questions1").hide();
         $("#questionsScreenP2").show();
@@ -398,6 +403,7 @@ $(function() {
     //Show the leaderboard
     $("#winnerPanel").fadeOut(1000, function() {
       $("#leaderboard").fadeIn(1000);
+      $("#refreshBtn").show();
     });
     //Store the scores
     for (var items in localStorage){
