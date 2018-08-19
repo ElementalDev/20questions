@@ -76,7 +76,7 @@ The user can only choose 1 answer. After that, they must wait for the timer to g
 
 After player 2 has completed their turn, a screen shows with an announcement of who won the game. It also has a text input box for the winning user to input their name for the leaderboard.
 
-![title screen](images/winnerscreen.png)
+![winner screen](images/winnerscreen.png)
 
 Once the user has inputted their name, they can click the button and it will take them to the leaderboard.
 
@@ -84,4 +84,4 @@ Once the user has inputted their name, they can click the button and it will tak
 
 This screen shows all of the previous players and scores, in order to invoke competition between users, in turn, increasing playability.
 
-![title screen](images/leaderboard.png)
+![leaderboard](images/leaderboard.png)
