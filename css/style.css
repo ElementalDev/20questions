@@ -163,11 +163,11 @@ input[type="submit"] {
   0% { background-color: #00CCFF; }
   10% { background-color: #00FFCC; }
   20% { background-color: #66FF66; }
-  30% { background-color: #CCFF66; }
+  30% { background-color: #66FFD0; }
   40% { background-color: #FFFF00; }
-  60% { background-color: #FF9933; }
-  70% { background-color: #FF6600; }
-  80% { background-color: #FF66CC; }
-  90% { background-color: #9999FF; }
-  100% { background-color: #00CCFF; }
+  60% { background-color: #00A1FF; }
+  70% { background-color: #A300FF; }
+  80% { background-color: #FF00F3; }
+  90% { background-color: #FFC699; }
+  100% { background-color: #FF000C; }
 }
