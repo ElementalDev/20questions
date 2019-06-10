@@ -246,7 +246,7 @@ $(function() {
     //Display the questions
     displayQuestionsP1(ques);
     $(answerBtns).on("click", buttonClickPlayerOne);
-    // Do this function every 5 seconds
+    // Do this function every 10 seconds
     var repeat = setInterval(function() {
       if (quesNumber == 19) {
         //Stop the timer and the questions from changing
