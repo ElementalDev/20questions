@@ -235,11 +235,11 @@ $(function() {
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
-    var time = 5;
+    var time = 10;
     var timer = setInterval(function(){
       time--;
       if (time < 1){
-        time = 5;
+        time = 10;
       }
       $("#timeKeep").html("Time: " + time);
     }, 1000);
@@ -342,11 +342,11 @@ $(function() {
     //Counter to stop changing questions
     var quesNumber = 0;
     //Timer
-    var time = 5;
+    var time = 10;
     var timer = setInterval(function(){
       time--;
       if (time < 1){
-        time = 5;
+        time = 10;
       }
       $("#timeKeep2").html("Time: " + time);
     }, 1000);
