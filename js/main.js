@@ -263,7 +263,7 @@ $(function() {
       //Display the questions
       displayQuestionsP1(ques);
       $(answerBtns).on("click", buttonClickPlayerOne);
-    }, 5000);
+    }, 10000);
   }
   //Player 2
   //Display questions for player 2
@@ -375,7 +375,7 @@ $(function() {
       //Display the questions
       displayQuestionsP2(ques);
       $(answerBtns2).on("click", buttonClickPlayerTwo);
-    }, 5000);
+    }, 10000);
   }
   //End Game
   //Get the winner
